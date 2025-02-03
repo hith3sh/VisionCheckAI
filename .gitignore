@@ -1,0 +1,33 @@
+# React
+node_modules/
+build/
+dist/
+.env
+*.log
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.ipr
+*.iws
+target/
+out/
+.idea/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+ENV.bak/
+venv.bak/
+*.log

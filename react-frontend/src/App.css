@@ -1,0 +1,144 @@
+/* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: url('/public/ai4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  text-align: center;
+}
+
+/* Main Container */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+/* Title Styling */
+.title {
+  background-color: #4A90E2;
+  color: #fff;
+  padding: 20px 0;
+  font-size: 2.2em;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Left and Right Column Alignment */
+.columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px; /* Add spacing between columns */
+  max-width: 100%;
+  margin-right: 10px; /* Add right margin */
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+#age {
+  width: 250px; /* Adjust as needed */
+  margin-right:30px
+}
+
+input[type="number"],
+input[type="file"],
+select {
+  width: 100%; /* Input fields fill the column width */
+  max-width: 200px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+input[type="number"]:focus,
+input[type="file"]:focus,
+select:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Buttons */
+.analyze-button,
+.back-button {
+  background-color: #4A90E2;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.analyze-button:hover,
+.back-button:hover {
+  background-color: #357ABD;
+  box-shadow: 0 5px 15px rgba(53, 122, 189, 0.4);
+}
+
+/* Footer Styling */
+footer {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Vertical Alignment for Inputs and Labels */
+.column label {
+  width: 100%;
+  text-align: left;
+}
+
+.column input,
+.column select,
+.column input[type="file"] {
+  max-width: 100%;
+}
+
+
+
+
+/* Center alignment for analyze button */
+form .analyze-button {
+  display: block;
+  margin-top: 20px;
+}
+
+.result-image {
+  max-width: 300px;  /* Set maximum width */
+  max-height: 250px; /* Set maximum height */
+  width: auto;       /* Maintain aspect ratio */
+  height: auto;      /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure entire image is visible */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+}
