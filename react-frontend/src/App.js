@@ -10,7 +10,7 @@ const [leftImage, setLeftImage] = useState(null);
 const [leftDioptre1, setLeftDioptre1] = useState('');
 const [leftDioptre2, setLeftDioptre2] = useState('');
 const [leftAstigmatism, setLeftAstigmatism] = useState('');
-const [leftPhakicPseudophakic, setLeftPhakicPseudophakic] = useState('');
+const [leftLens, setLeftLens] = useState('');
 const [leftPneumatic, setLeftPneumatic] = useState('');
 const [leftPachymetry, setLeftPachymetry] = useState('');
 const [leftAxialLength, setLeftAxialLength] = useState('');
@@ -21,7 +21,7 @@ const [rightImage, setRightImage] = useState(null);
 const [rightDioptre1, setRightDioptre1] = useState('');
 const [rightDioptre2, setRightDioptre2] = useState('');
 const [rightAstigmatism, setRightAstigmatism] = useState('');
-const [rightPhakicPseudophakic, setRightPhakicPseudophakic] = useState('');
+const [rightLens, setRightLens] = useState('');
 const [rightPneumatic, setRightPneumatic] = useState('');
 const [rightPachymetry, setRightPachymetry] = useState('');
 const [rightAxialLength, setRightAxialLength] = useState('');
@@ -30,10 +30,6 @@ const [rightVFMD, setRightVFMD] = useState('');
 const [age, setAge] = useState('');
 const [gender, setGender] = useState('');
 
-const [stage, setStage] = useState('');
-const [riskScore, setRiskScore] = useState('');
-const [explanation, setExplanation] = useState('');
-const [recommendation, setRecommendation] = useState('');
 
   return (
     <Routes>
@@ -51,8 +47,8 @@ const [recommendation, setRecommendation] = useState('');
           setRightDioptre2={setRightDioptre2}
           setLeftAstigmatism={setLeftAstigmatism}
           setRightAstigmatism={setRightAstigmatism}
-          setLeftPhakicPseudophakic={setLeftPhakicPseudophakic}
-          setRightPhakicPseudophakic={setRightPhakicPseudophakic}
+          setLeftLens={setLeftLens}
+          setRightLens={setRightLens}
           setLeftPneumatic={setLeftPneumatic}
           setRightPneumatic={setRightPneumatic}
           setLeftPachymetry={setLeftPachymetry}
@@ -71,8 +67,8 @@ const [recommendation, setRecommendation] = useState('');
           rightDioptre2={rightDioptre2}
           leftAstigmatism={leftAstigmatism}
           rightAstigmatism={rightAstigmatism}
-          leftPhakicPseudophakic={leftPhakicPseudophakic}
-          rightPhakicPseudophakic={rightPhakicPseudophakic}
+          leftLens={leftLens}
+          rightLens={rightLens}
           leftPneumatic={leftPneumatic}
           rightPneumatic={rightPneumatic}
           leftPachymetry={leftPachymetry}
@@ -98,8 +94,8 @@ const [recommendation, setRecommendation] = useState('');
           rightDioptre2={rightDioptre2}
           leftAstigmatism={leftAstigmatism}
           rightAstigmatism={rightAstigmatism}
-          leftPhakicPseudophakic={leftPhakicPseudophakic}
-          rightPhakicPseudophakic={rightPhakicPseudophakic}
+          setRightLens={setRightLens}
+          setLeftLens={setLeftLens}
           leftPneumatic={leftPneumatic}
           rightPneumatic={rightPneumatic}
           leftPachymetry={leftPachymetry}
@@ -108,10 +104,6 @@ const [recommendation, setRecommendation] = useState('');
           rightAxialLength={rightAxialLength}
           leftVFMD={leftVFMD}
           rightVFMD={rightVFMD}
-          stage={stage} 
-          riskScore={riskScore} 
-          explanation={explanation} 
-          recommendation={recommendation} 
           />
         }
       />

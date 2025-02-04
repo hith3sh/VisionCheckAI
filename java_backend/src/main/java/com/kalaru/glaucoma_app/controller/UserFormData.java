@@ -11,8 +11,8 @@ public class UserFormData {
     private String rightDioptre2;
     private String leftAstigmatism;
     private String rightAstigmatism;
-    private String leftPhakicPseudophakic;
-    private String rightPhakicPseudophakic;
+    private String leftLens;
+    private String rightLens;
     private String leftPneumatic;
     private String rightPneumatic;
     private String leftPachymetry;
@@ -106,20 +106,20 @@ public class UserFormData {
         this.rightAstigmatism = rightAstigmatism;
     }
 
-    public String getLeftPhakicPseudophakic() {
-        return leftPhakicPseudophakic;
+    public String getleftLens() {
+        return leftLens;
     }
 
-    public void setLeftPhakicPseudophakic(String leftPhakicPseudophakic) {
-        this.leftPhakicPseudophakic = leftPhakicPseudophakic;
+    public void setleftLens(String leftLens) {
+        this.leftLens = leftLens;
     }
 
-    public String getRightPhakicPseudophakic() {
-        return rightPhakicPseudophakic;
+    public String getrightLens() {
+        return rightLens;
     }
 
-    public void setRightPhakicPseudophakic(String rightPhakicPseudophakic) {
-        this.rightPhakicPseudophakic = rightPhakicPseudophakic;
+    public void setrightLens(String rightLens) {
+        this.rightLens = rightLens;
     }
 
     public String getLeftPneumatic() {

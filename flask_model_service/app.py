@@ -9,6 +9,7 @@ import shap
 import matplotlib.pyplot as plt
 import cv2
 import json
+import shap
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -36,7 +37,12 @@ fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
 #     # Example for saving a summary plot
 #     shap.summary_plot(shap_values, X_test)
 #     plt.savefig("summary_plot.png", dpi=300, bbox_inches="tight")
-#     plt.close()
+    # plt.close()
+
+# def gradcam_prediction(image):
+
+
+#     return result
 
 def preprocess_image(image_bytes):
     image_array = np.frombuffer(image_bytes, np.uint8)
@@ -111,24 +117,34 @@ def predict():
         # Extract fields from the parsed JSON data
         gender = data_dict.get("gender")
         age = handle_empty(data_dict.get("age"), None)
-        leftDioptre1 = handle_empty(data_dict.get("leftDioptre1"), 0.737636)
-        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), 0.737636)
-        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"), -1.625104)
-        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"), -1.625104)
-        leftAstigmatism = handle_empty(data_dict.get("leftAstigmatism"), 92.371608)
-        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"), 92.371608)
-        leftPhakicPseudophakic = handle_empty(data_dict.get("leftPhakicPseudophakic"), 0.666667)
-        rightPhakicPseudophakic = handle_empty(data_dict.get("rightPhakicPseudophakic"), 0.666667)
-        leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 16.259596)
-        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"), 16.259596)
-        leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 536.930380)
-        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 536.930380)
-        leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 23.551106)
-        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"), 23.551106)
-        leftVFMD = handle_empty(data_dict.get("leftVFMD"), -4.344207)
-        rightVFMD = handle_empty(data_dict.get("rightVFMD"), -4.344207) 
+        leftDioptre1 = handle_empty(data_dict.get("leftDioptre1"), 0.75)
+        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), 0.75)
+        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"),-1.0)
+        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"),-1.0)
+        leftAstigmatism = handle_empty(data_dict.get("leftAstigmatism"), 90)
+        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"), 90)
+        leftLens = handle_empty(data_dict.get("leftLens"), 'no')
+        rightLens = handle_empty(data_dict.get("rightLens"), 'no')
+        leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 16.26)
+        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"), 16.26)
+        leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 536.93)
+        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 536.93)
+        leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 23.55)
+        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"), 23.55)
+        leftVFMD = handle_empty(data_dict.get("leftVFMD"), -2.39)
+        rightVFMD = handle_empty(data_dict.get("rightVFMD"), -2.39) 
         leftEye=1.0
         rightEye=0.0
+
+        if leftLens == 'no':
+            leftLens = 0
+        else:
+            leftLens = 1
+
+        if rightLens == 'no':
+            rightLens= 0
+        else:
+            rightLens = 1
 
         if gender == 'male':
             gender = 1.0
@@ -146,7 +162,7 @@ def predict():
                             leftDioptre1,
                             leftDioptre2,
                             leftAstigmatism,
-                            leftPhakicPseudophakic,
+                            leftLens,
                             leftPneumatic,
                             leftPachymetry,
                             leftAxialLength,
@@ -159,7 +175,7 @@ def predict():
                              rightDioptre1,
                              rightDioptre2, 
                              rightAstigmatism,
-                             rightPhakicPseudophakic,
+                             rightLens,
                              rightPneumatic,
                              rightPachymetry,
                              rightAxialLength,
@@ -168,7 +184,6 @@ def predict():
                              ]
 
         
-        # adding batch dimension
         left_tabular_array = np.array([left_tabular_data_arr], dtype=np.float32) 
         right_tabular_array = np.array([right_tabular_data_arr], dtype=np.float32)
 
@@ -180,6 +195,11 @@ def predict():
         # feed in to the fusion model  - right eye
         right_prediction = fusion_model.predict([right_eye_image, right_tabular_array])
 
+        # generate SHAP values
+        # shap_values = explainer.shap_values([background_images_val_np, background_tabular_val_np])
+        # shap.summary_plot(shap_values_tabular_class0, background_tabular_val.numpy(), feature_names=left_tabular_data_arr)
+
+ 
         # get glaucoma stage 
         left_glaucoma_stage = glaucoma_state(left_prediction)
         right_glaucoma_stage = glaucoma_state(right_prediction)

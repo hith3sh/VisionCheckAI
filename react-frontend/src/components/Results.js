@@ -1,5 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { Link , useLocation} from 'react-router-dom';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from "@mui/material/Typography";
 
 function Results ({
   leftImage,
@@ -106,7 +111,30 @@ function Results ({
         </div>
       </div>
       <div className="output-container">
-
+      <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>Show Explainable AI Results</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          Here's the Grad-CAM visualization:
+        </Typography>
+        {/* Replace this with Grad-CAM visualization */}
+        <div
+          style={{
+            height: "150px",
+            backgroundColor: "#f0f0f0",
+            marginTop: "10px",
+          }}
+        >
+          Grad-CAM Visualization Placeholder
+        </div>
+      </AccordionDetails>
+    </Accordion>
       </div>
       <button className="back-button">
         <Link to="/" className="link">Back to Home</Link>

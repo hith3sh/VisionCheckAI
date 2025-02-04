@@ -2,22 +2,21 @@ import React from 'react';
 import EyeForm from './EyeForm';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../App.css'; // Import the CSS file for styling
+import '../App.css';
 
 function Home({
   setLeftImage, setRightImage, setAge, setGender,
   setLeftDioptre1, setRightDioptre1, setLeftDioptre2, setRightDioptre2, setLeftAstigmatism,
-  setRightAstigmatism, setLeftPhakicPseudophakic, setRightPhakicPseudophakic, setLeftPneumatic,
+  setRightAstigmatism, setLeftLens, setRightLens, setLeftPneumatic,
   setRightPneumatic, setLeftPachymetry, setRightPachymetry, setLeftAxialLength, setRightAxialLength,
   setLeftVFMD, setRightVFMD, leftImage, rightImage, age, gender, 
   leftDioptre1, rightDioptre1, leftDioptre2, rightDioptre2, leftAstigmatism,
-  rightAstigmatism, leftPhakicPseudophakic, rightPhakicPseudophakic, leftPneumatic, rightPneumatic,
+  rightAstigmatism, leftLens, rightLens, leftPneumatic, rightPneumatic,
   leftPachymetry, rightPachymetry, leftAxialLength, rightAxialLength, leftVFMD, rightVFMD
 }) {
   const navigate = useNavigate();
 
   const handleAnalyzeAndNavigate = async () => {
-    // Ensure age and gender are not empty
     if (!age || !gender) {
       alert("Please fill in both age and gender fields.");
       return;
@@ -32,8 +31,8 @@ function Home({
       rightDioptre2,
       leftAstigmatism,
       rightAstigmatism,
-      leftPhakicPseudophakic,
-      rightPhakicPseudophakic,
+      leftLens,
+      rightLens,
       leftPneumatic,
       rightPneumatic,
       leftPachymetry,
@@ -49,7 +48,7 @@ function Home({
     formData.append("rightImage", rightImage);
     formData.append("data", JSON.stringify(data)); // Add the rest of the data as JSON
     
-    console.log("FormData content:");
+    console.log("FormData content:",data);
     for (let pair of formData.entries()) {
         if (pair[1] instanceof File) {
             console.log(pair[0], pair[1].name, pair[1].type, pair[1].size);
@@ -91,7 +90,7 @@ function Home({
           setDioptre1={setLeftDioptre1}
           setDioptre2={setLeftDioptre2}
           setAstigmatism={setLeftAstigmatism}
-          setPhakicPseudophakic={setLeftPhakicPseudophakic}
+          setLens={setLeftLens}
           setPneumatic={setLeftPneumatic}
           setPachymetry={setLeftPachymetry}
           setAxialLength={setLeftAxialLength}
@@ -104,7 +103,7 @@ function Home({
           setDioptre1={setRightDioptre1}
           setDioptre2={setRightDioptre2}
           setAstigmatism={setRightAstigmatism}
-          setPhakicPseudophakic={setRightPhakicPseudophakic}
+          setLens={setRightLens}
           setPneumatic={setRightPneumatic}
           setPachymetry={setRightPachymetry}
           setAxialLength={setRightAxialLength}

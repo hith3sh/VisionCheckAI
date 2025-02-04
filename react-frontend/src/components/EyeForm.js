@@ -1,26 +1,22 @@
-//import React, { useState } from 'react';
-
 function EyeForm({
-  eyeSide, // "Left" or "Right"
+  eyeSide,
   setImage,
   setDioptre1,
   setDioptre2,
   setAstigmatism,
-  setPhakicPseudophakic,
+  setLens,
   setPneumatic,
   setPachymetry,
   setAxialLength,
   setVFMD,
 }) {
-  //const [preview, setPreview] = useState(null); 
-
-  const handleFileChange = (e) =>{
-    const file = e.target.files[0];// getting actual file
-    if (file){
-      setImage(file); //storing file for FormData
-      //setPreview(URL.createObjectURL(file)); // storing preview url
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
     }
-  }
+  };
+
   return (
     <div className="column">
       <h3>{eyeSide} Eye</h3>
@@ -38,9 +34,13 @@ function EyeForm({
 
         <label>Astigmatism:</label>
         <input type="number" onChange={(e) => setAstigmatism(e.target.value)} />
-
-        <label>Lens:</label>
-        <input type="number" onChange={(e) => setPhakicPseudophakic(e.target.value)} />
+        
+        <label>Using lens:</label>
+        <select onChange={(e) => setLens(e.target.value)}>
+          <option value=""> Select type</option>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
 
         <label>Pneumatic:</label>
         <input type="number" onChange={(e) => setPneumatic(e.target.value)} />
