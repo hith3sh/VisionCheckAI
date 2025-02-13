@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import cv2
 import json
 import shap
+from gradcam import generate_gradcam
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -115,26 +116,31 @@ def predict():
             return default if value == "" else value
 
         # Extract fields from the parsed JSON data
+        # Basic patient information
         gender = data_dict.get("gender")
         age = handle_empty(data_dict.get("age"), None)
+
+        # Left eye measurements
         leftDioptre1 = handle_empty(data_dict.get("leftDioptre1"), 0.75)
-        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), 0.75)
-        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"),-1.0)
-        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"),-1.0)
+        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"), -1.0)
         leftAstigmatism = handle_empty(data_dict.get("leftAstigmatism"), 90)
-        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"), 90)
         leftLens = handle_empty(data_dict.get("leftLens"), 'no')
-        rightLens = handle_empty(data_dict.get("rightLens"), 'no')
         leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 16.26)
-        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"), 16.26)
         leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 536.93)
-        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 536.93)
         leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 23.55)
-        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"), 23.55)
         leftVFMD = handle_empty(data_dict.get("leftVFMD"), -2.39)
-        rightVFMD = handle_empty(data_dict.get("rightVFMD"), -2.39) 
-        leftEye=1.0
-        rightEye=0.0
+        leftEye = 1.0
+
+        # Right eye measurements  
+        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), 0.75)
+        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"), -1.0)
+        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"), 90)
+        rightLens = handle_empty(data_dict.get("rightLens"), 'no')
+        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"), 16.26)
+        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 536.93)
+        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"), 23.55)
+        rightVFMD = handle_empty(data_dict.get("rightVFMD"), -2.39)
+        rightEye = 0.0
 
         if leftLens == 'no':
             leftLens = 0
@@ -196,8 +202,8 @@ def predict():
         right_prediction = fusion_model.predict([right_eye_image, right_tabular_array])
 
         # generate SHAP values
-        # shap_values = explainer.shap_values([background_images_val_np, background_tabular_val_np])
-        # shap.summary_plot(shap_values_tabular_class0, background_tabular_val.numpy(), feature_names=left_tabular_data_arr)
+        shap_values = explainer.shap_values([background_images_val_np, background_tabular_val_np])
+        shap.summary_plot(shap_values_tabular_class0, background_tabular_val.numpy(), feature_names=left_tabular_data_arr)
 
  
         # get glaucoma stage 
@@ -209,6 +215,10 @@ def predict():
         print("glaucoma state for right eye:",right_glaucoma_stage)
         print("glaucoma state for left eye", left_glaucoma_stage)
 
+        # Generate GradCAM for left and right eyes
+        left_gradcam_path = generate_gradcam(left_image_path, fusion_model)
+        right_gradcam_path = generate_gradcam(right_image_path, fusion_model)
+        
         return jsonify({
             "glaucoma_state_right_eye": right_glaucoma_stage,
             "glaucoma_state_left_eye": left_glaucoma_stage

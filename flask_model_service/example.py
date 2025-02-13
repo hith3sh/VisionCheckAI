@@ -69,8 +69,6 @@ with open('../weights/shap_explainer.pkl', 'rb') as f:
 shap_values = explainer.shap_values([right_eye_image, tabular_array_np])
 shap_values_reshaped = shap_values[1][:, :, 1] 
 print('shap value shape', shap_values_reshaped.shape)  # (1, 11)
-print('shap values', shap_values_reshaped)
-
 
 # PLOTTING SUMMARY
 shap.summary_plot(shap_values_reshaped , tabular_array_np, 
