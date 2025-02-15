@@ -1,0 +1,40 @@
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1; /* Ensure buttons are on top */
+    padding: 5px 10px; /* Adjust padding as needed */
+    cursor: pointer; /* Add a pointer cursor */
+    color: red;
+    background-color: rgba(255, 0, 0, 0.1); /* Set the background to transparent */
+    border: line;
+    border-width: 0.1px;
+    border-color: red; /* Remove the border */
+    outline: none; /* Remove the outline */
+  }
+  
+
+.downloadButton {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; /* Ensure buttons are on top */
+  padding: 5px 10px; /* Adjust padding as needed */
+  cursor: pointer; /* Add a pointer cursor */
+}
+
+.modal-modal-title-custom{
+    position: relative;
+    display: flex;
+    align-self: center;
+    top: 0px;
+    justify-self: center;
+    justify-content: center;
+    font-family: 'montserrat';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 1rem;
+}

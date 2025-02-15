@@ -1,0 +1,559 @@
+.profile {
+    background-color: #f2f3f4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+  ::placeholder{
+    color: #ADA9A9;
+    font-weight: 400;
+  
+  }
+
+  .profile .div {
+    background-color: #f2f3f4;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+    overflow: hidden;
+  }
+  /*my profile*/
+  .profile .text-wrapper {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    height: 70px;
+    left: 71px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    /*text-fill-color: transparent;*/
+    top: 42px;
+    width: 247px;
+  }
+  /*personal information*/
+  .profile .overlap-group {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px 1px #00000040;
+    height: 407px;
+    left: 351px;
+    position: absolute;
+    top: 100px;
+    width: 1061px;
+  }
+  /*country*/
+  .profile .text-wrapper-2 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 723px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 141px;
+    white-space: nowrap;
+  }
+  /*Lasstname*/
+  .profile .text-wrapper-3 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 228px;
+    white-space: nowrap;
+  }
+  /*contact no.*/
+  .profile .text-wrapper-4 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 310px;
+    white-space: nowrap;
+  }
+  
+  .profile .overlap {
+    height: 24px;
+    left: 43px;
+    position: absolute;
+    top: 146px;
+    width: 114px;
+  }
+  /*firstname*/
+  .profile .text-wrapper-5 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  /*title*/
+  .profile .text-wrapper-6 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 43px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 57px;
+    white-space: nowrap;
+  }
+  /*title*/
+  .profile .input-1 {
+    background-color: #d9d9d93b;
+    border-radius: 10px;
+    border-color: #d9d9d93b;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 40px;
+    padding-left: 20px;
+    position: absolute;
+    top: 77px;
+    width: 295px;
+  }
+  /*country code*/
+  .profile .text-wrapper-7 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 459px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 141px;
+    white-space: nowrap;
+  }
+  /*country code*/
+  .profile .input-2 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 452px;
+    position: absolute;
+    top: 171px;
+    width: 202px;
+  }
+  /*address line1*/
+  .profile .text-wrapper-8 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 460px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 228px;
+    white-space: nowrap;
+  }
+  /*email address*/
+  .profile .text-wrapper-9 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 459px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 57px;
+    white-space: nowrap;
+  }
+  /*email address*/
+  .profile .input-8 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 452px;
+    position: absolute;
+    top: 77px;
+    width: 515px;
+  }
+  /*personal information text*/
+  .profile .text-wrapper-10 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 29px;
+    left: 35px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    /*text-fill-color: transparent;*/
+    text-shadow: 0px 4px 41px #00000017;
+    top: 14px;
+  }
+  
+  
+  /*country*/
+  .profile .input-3 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 709px;
+    position: absolute;
+    top: 174px;
+    width: 258px;
+  }
+  /*address line 1*/
+  .profile .input-4 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 449px;
+    position: absolute;
+    top: 252px;
+    width: 518px;
+  }
+  /*address line 2*/
+  .profile .text-wrapper-11 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 460px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 310px;
+    white-space: nowrap;
+  }
+  /*first name*/
+  .profile .input-5 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 40px;
+    position: absolute;
+    top: 174px;
+    width: 295px;
+  }
+  /*contact number*/
+  .profile .input-6 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 40px;
+    position: absolute;
+    top: 338px;
+    width: 295px;
+  }
+  /*Last name*/
+  .profile .input-7 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 43px;
+    position: absolute;
+    top: 257px;
+    width: 295px;
+  }
+  
+  /*address line 2*/
+  .profile .input-9 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 40px;
+    left: 452px;
+    position: absolute;
+    top: 338px;
+    width: 518px;
+  }
+  /*verticle rectangle*/
+  .profile .overlap-2 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px 1px #00000040;
+    height: 407px;
+    left: 50px;
+    position: absolute;
+    top: 100px;
+    width: 290px;
+  }
+  
+  /*name2*/
+  .profile .text-wrapper-13 {
+    color: #000000;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 63px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 327px;
+    white-space: nowrap;
+  }
+  
+  .profile .physiatrist {
+    color: #000000;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    left: 79px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 337px;
+  }
+  
+  .profile .avatar-image {
+    left: 37px !important;
+    position: absolute !important;
+    top: 76px !important;
+    height: 200px;
+    width: 200px;
+    border-radius: 50px;
+  }
+  
+  /*working ex. */
+  .profile .overlap-3 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px 1px #00000040;
+    height: 303px;
+    left: 49px;
+    position: absolute;
+    top: 516px;
+    width: 1363px;
+  }
+  /*experience*/
+  .profile .text-wrapper-14 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 535px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 146px;
+    white-space: nowrap;
+  }
+  /*specialization*/
+  .profile .text-wrapper-15 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 35px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 48px;
+    white-space: nowrap;
+  }
+  /*qualifications*/
+  .profile .text-wrapper-16 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 37px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 136px;
+    white-space: nowrap;
+  }
+  /*hospital*/
+  .profile .text-wrapper-17 {
+    color: #ada8a8;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 24px;
+    left: 535px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 48px;
+    white-space: nowrap;
+  }
+  /*working experience*/
+  .profile .text-wrapper-18 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 29px;
+    left: 26px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    /*text-fill-color: transparent;*/
+    text-shadow: 0px 4px 41px #00000017;
+    top: 15px;
+  }
+  /*hospital*/
+  .profile .input-10 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 46px;
+    left: 530px;
+    position: absolute;
+    top: 71px;
+    width: 450px;
+  }
+  /*experience*/
+  .profile .input-11 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 46px;
+    left: 533px;
+    position: absolute;
+    top: 183px;
+    width: 477px;
+  }
+  /*spec.*/
+  .profile .input-12 {
+    background-color: #d9d9d93b;
+    border-color: #d9d9d93b;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 46px;
+    left: 35px;
+    position: absolute;
+    top: 71px;
+    width: 363px;
+  }
+  /*quali.*/
+  .profile .rectangle-13 {
+    background-color: #d9d9d93b;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 46px;
+    left: 35px;
+    position: absolute;
+    top: 163px;
+    width: 393px;
+  }
+  
+  
+  .profile .qualification-row{
+    height: 30px !important;
+    width: 500px !important;
+    
+      
+  }
+  
+  .profile .overlap-4 {
+    height: 65px;
+    left: 1200px;
+    position: absolute;
+    top: 825px;
+    width: 137px;
+  }
+  /* }input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 35px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    position: absolute;
+    white-space: nowrap;
+    background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+    border: 1px linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+    color: #fff;
+    padding: 10px 20px;
+  } */
+  /* input[type="submit"]:hover {
+    background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+  } */

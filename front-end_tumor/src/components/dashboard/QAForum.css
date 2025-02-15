@@ -1,0 +1,49 @@
+.dashboard .overlap-4 {
+    border-radius: 65px;
+    height: 364px;
+    left: 920px;
+    position: absolute;
+    top: 173px;
+    width: 458px;
+  }
+  
+  .dashboard .rectangle-6 {
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    border-radius: 65px;
+    box-shadow: 0px 4px 41px #00000017;
+    height: 364px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 458px;
+  }
+  
+  .dashboard .rectangle-7 {
+    height: 237px;
+    left: 51px;
+    object-fit: cover;
+    position: absolute;
+    top: 42px;
+    width: 357px;
+  }
+  
+  .dashboard .q-a-forum {
+    color: #ffffff;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 26px;
+    font-weight: 800;
+    height: 32px;
+    text-decoration: none;
+    left: 153px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 300px;
+  }

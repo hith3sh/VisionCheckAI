@@ -1,0 +1,244 @@
+.forum {
+    background-color: #f3f3fd;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .forum .rectangle-2 {
+    background-color: #ffffff;
+    height: 932px;
+    left: 389px;
+    position: absolute;
+    top: 96px;
+    width: 1051px;
+  }
+  
+  
+  .forum .rectangle {
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #000000;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0px;
+    width: 339px;
+  }
+  
+  .forum .text-wrapper {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 24px;
+    left: 119px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: fixed;
+    text-shadow: 0px 4px 41px #00000017;
+    top: 540px;
+    white-space: nowrap;
+  }
+  
+  .forum .text-wrapper-2 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 24px;
+    left: 119px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: fixed;
+    text-shadow: 0px 4px 41px #00000017;
+    top: 440px;
+    white-space: nowrap;
+  }
+  
+  .forum .text-wrapper-3 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 24px;
+    left: 116px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: fixed;
+    text-shadow: 0px 4px 41px #00000017;
+    top: 340px;
+    white-space: nowrap;
+  }
+  
+  .forum .text-wrapper-4 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    height: 24px;
+    left: 116px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: fixed;
+    text-shadow: 0px 4px 41px #00000017;
+    top: 240px;
+    white-space: nowrap;
+  }
+  
+  .forum .group {
+    height: 120px;
+    left: 3px;
+    position: absolute;
+    top: 0;
+    width: 311px;
+  }
+  
+  .forum .overlap-group {
+    height: 116px;
+    position: relative;
+    top: 4px;
+    width: 309px;
+  }
+  
+  .forum .tumor-ai {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 43.2px;
+    font-weight: 400;
+    height: 53px;
+    left: 114px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: fixed;
+    top: 32px;
+  }
+  
+  .forum .span {
+    color: #1678f2;
+    font-weight: 700;
+  }
+  
+  .forum .text-wrapper-5 {
+    color: #1678f2;
+    font-family: "Montserrat-Regular", Helvetica;
+  }
+  
+  .forum .navy-modern-AI {
+    height: 116px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 120px;
+  }
+  
+  .forum .image {
+    height: 40px;
+    left: 47px;
+    object-fit: cover;
+    top: 233px;
+    width: 40px;
+    position: fixed;
+  }
+  
+  .forum .img {
+    height: 41px;
+    left: 46px;
+    object-fit: cover;
+    top: 334px;
+    width: 41px;
+    position: fixed;
+  }
+  
+  .forum .image-2 {
+    height: 40px;
+    left: 47px;
+    object-fit: cover;
+    top: 431px;
+    width: 40px;
+    position: fixed;
+  }
+  
+  .forum .image-3 {
+    height: 36px;
+    left: 51px;
+    object-fit: cover;
+    top: 539px;
+    width: 36px;
+    position: fixed;
+  }
+  
+ 
+ 
+  
+
+  
+  .forum .text-wrapper-8 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
+    background-clip: text;
+    color: transparent;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 46px;
+    font-weight: 600;
+    height: 56px;
+    left: 389px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 27px;
+  }
+  

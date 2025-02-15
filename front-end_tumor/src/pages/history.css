@@ -1,0 +1,73 @@
+
+  
+  
+  
+.hframe {
+    background-color: var(--secondary-white);
+    
+    border-color: #ebebee;
+    border-radius: 10.67px;
+    height: 660px;
+    left: 381px;
+    overflow: hidden;
+    position: absolute;
+    top: 186px;
+    width: 1025px;
+  }
+  
+  
+  
+ .upload-history {
+    color: var(--inactive-state-color);
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 46px;
+    font-weight: 500;
+    height: 85px;
+    left: 425px;
+    color:darkgrey;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 50px;
+    width: 220px;
+  }
+  
+  /* Style the table */
+.htable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Style the table header (thead) */
+  .thead-dark {
+    background-color: #343a40; /* Change to your desired background color */
+    color: #ffffff; /* Change to your desired text color */
+  }
+  
+  /* Style table header cells (th) */
+  .htable th {
+    padding: 10px;
+    text-align: left;
+    font-family: Montserrat;
+  }
+  
+  /* Style table data cells (td) */
+  .htable td {
+    padding: 10px;
+    border-top: 1px solid #ebebee; 
+    font-family: Montserrat;/* Add a top border for rows */
+  }
+  
+  /* Style alternate rows with a background color */
+  .htable tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Change to your desired background color */
+  }
+  
+  /* Style links inside table cells */
+  .htable a {
+    text-decoration: none;
+    color: #007bff; /* Change to your desired link color */
+    font-family: Montserrat;
+  }
+  

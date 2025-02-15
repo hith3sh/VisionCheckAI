@@ -1,0 +1,50 @@
+.cust-button-1{ 
+    width: 6vw;
+    height: 4.6vh;
+    position: relative;
+    border-radius: 14.506px;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    border: none;
+    font-size: 1.2rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    left: 85vw;
+    text-decoration: none;
+    list-style: none;
+    font-family: Montserrat;
+    font-style: bold;
+    color: #ffffff;
+    min-height: 2.5rem;
+
+    
+
+    }
+
+@media (max-width: 400px) {
+        button {
+            font-size: 0.01rem;
+            
+        }
+        }
+    
+    
+@media (max-width: 900px) {
+    button {
+        font-size: 0.1rem;
+        width: 3rem;
+    }
+    }
+
+@media (max-width: 1200px) {
+    button {
+        font-size: 0.7rem; /* Adjust font size for smaller screens */
+        /* ... (other styles) */
+    }
+    }
+
+@media (max-height: 800px) {
+    button {
+        font-size: 0.7rem; /* Adjust font size for smaller screens */
+        /* ... (other styles) */
+    }
+    }

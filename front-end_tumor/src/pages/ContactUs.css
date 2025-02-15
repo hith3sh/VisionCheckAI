@@ -1,0 +1,86 @@
+
+.contact-us {
+    background-color: #f3f3fd;
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 32px;
+    color:#007bff; /* Text color for the heading */
+    font-family: "Montserrat-ExtraBold", Helvetica;
+  }
+  
+ 
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444; /* Text color for labels */
+    font-family: "Montserrat-Medium", Helvetica;
+  }
+  
+  .txt-contactus,
+  .email-contactus,
+  .txt-area {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px; /* Font size for input fields */
+    width: 100%;
+  }
+  
+  .txt-area {
+    height: 120px; /* Adjust the height of the textarea */
+  }
+  
+  .sub-11{
+    position: absolute;
+    top: 430px;
+    left: 50px;
+    width: 180px;
+    height: 50px;
+    background-color: #007bff; /* Blue submit button color */
+    font-family: "Montserrat-Medium", Helvetica;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px; /* Font size for the button text */
+    transition: background-color 0.3s;
+  }
+  
+.sub-11:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+ 
+  
+  
+  
+   .group {
+    height: 660px;
+    left: 753px;
+    position: absolute;
+    top: 140px;
+    width: 646px;
+  }
+ 
+.image-container{
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+
+}
+  
+  
+
+
+  
+    

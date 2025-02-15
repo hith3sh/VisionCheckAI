@@ -1,0 +1,50 @@
+.dashboard .overlap-2 {
+    height: 364px;
+    left: 359px;
+    position: absolute;
+    top: 588px;
+    width: 491px;
+  }
+  
+  
+  
+  .dashboard .rectangle-2 {
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    border-radius: 65px;
+    box-shadow: 0px 4px 41px #00000017;
+    height: 364px;
+    left: 30px;
+    position: absolute;
+    top: 0;
+    width: 461px;
+  }
+  
+  .dashboard .rectangle-3 {
+    height: 237px;
+    left: 82px;
+    object-fit: cover;
+    position: absolute;
+    top: 42px;
+    width: 357px;
+  }
+  
+  .dashboard .text-wrapper-6 {
+    color: #ffffff;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 26px;
+    font-weight: 800;
+    height: 32px;
+    left: 117px;
+    text-decoration: none;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 297px;
+  }
