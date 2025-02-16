@@ -7,7 +7,7 @@ import { Aboutus } from './pages/aboutus';
 import  ContactUs  from './pages/contactus';
 import  NoPage  from './pages/nopage';
 import Login from './pages/login';
-import {Uploadmri}   from './pages/uploadmri';
+import { UploadRetinal } from './pages/uploadretinal';
 import { fetchData } from './utils/get';
 import Register from './pages/register';
 import {Dashboard} from './pages/dashboard';
@@ -16,9 +16,8 @@ import axios from 'axios';
 import Results from './pages/results';
 import Question from './pages/question';
 import History from './pages/history';
-import {BreastCancer} from './pages/uploadimage';
 import Profile from './pages/profile';
-import Braintumor from './pages/braintumor';
+
 function App() {
 
   const LayoutWithNavbar = () => (
@@ -55,7 +54,7 @@ function App() {
       </Route>
 
       {/* Routes without Navbar */}
-      <Route path="/uploadmri" element={<Uploadmri />} />
+      <Route path="/uploadretinal" element={<UploadRetinal />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/*" element={<NoPage />} />
@@ -64,9 +63,7 @@ function App() {
       <Route path="/results" element={<Results />} />
       <Route path="/question" element={<Question />} />
       <Route path="/history" element={<History />} />
-      <Route path="/uploadimage" element={<BreastCancer />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/braintumor" element={<Braintumor />} />
     </Routes>
     </BrowserRouter>
 

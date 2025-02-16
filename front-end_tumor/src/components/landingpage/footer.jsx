@@ -38,9 +38,8 @@ export const CustFooter = () => {
         <p className='gtp'>Go to Page</p>
         <p className='ngt'>Navigate to</p>
         <p className='getintouch'>Get In Touch</p>
-        <p className='no-1'>+94 77 39 35 182</p>
+        <p className='no-1'>+94 78 947 5314</p>
     </div>
 
   );
 }
-

@@ -16,7 +16,7 @@ export const Dashboard = () => {
         <Icons/>
           <div className="text-wrapperdash">Dashboard</div> 
           <div className="rectangle1" />
-          <Link to='/uploadmri'>
+          <Link to='/uploadretinal'>
           <img className="rectangle1217" alt="Rectangle" src={Rectangle1217}/>
           </Link>
           <div className="text-wrapper1217">Glaucoma Detection</div>

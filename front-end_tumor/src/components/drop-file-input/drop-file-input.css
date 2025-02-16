@@ -25,10 +25,25 @@
 }
 
 .drop-file-input__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.drop-file-input__label p {
+    color: #333;
+    font-family: Montserrat;
+    font-size: 16px;
     text-align: center;
-    color: var(--txt-second-color);
+}
+
+.file-name {
+    color: #3A8EF6;
     font-weight: 600;
-    padding: 10px;
+    margin-top: 8px;
+    word-break: break-all;
+    max-width: 90%;
 }
 
 .drop-file-input__label img {

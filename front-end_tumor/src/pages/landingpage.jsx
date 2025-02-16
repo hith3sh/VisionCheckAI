@@ -6,7 +6,7 @@ import {Oursolutions} from '../components/landingpage/oursolutions';
 import { Backhead, Gradient, Bottompath } from '../assets/index';
 import { Button } from '@mui/base/Button';
 import  {CustFooter}  from '../components/landingpage/footer';
-import {Uploadmri} from './uploadmri'
+import {UploadRetinal} from './uploadretinal'
 import { Outlet, Link } from "react-router-dom";
 import { Element } from 'react-scroll';
 

@@ -1,0 +1,274 @@
+.fileup-1{
+    z-index: 1000;
+    position: absolute;
+    top: 300px;
+    left: 140px;
+    border-radius: 10px;
+  }
+
+
+.white-box-1{
+        position: absolute;
+        top: 450px;
+        left: 765px;
+        transform: translate(-50%, -50%);
+        width: 95vw;
+        height: 70vh;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: #FFF;
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    
+    
+}
+
+#uploadmri-1 {
+    position: absolute;
+    flex-shrink: 0;
+    top: 10px;
+    left: 35px;
+    min-width: 3rem;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    z-index: 2000;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+.submit-1{
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 10px;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+}
+
+.top-txt-1{
+    position: absolute;
+    top: 250px;
+    left: 155px;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.dropfiles-comp{
+    position: absolute;
+    top: 300px;
+    left: 680px;
+}
+
+.subline-2{
+    position: absolute;
+    top: 60px;
+    left: 35px;
+    width: 1400px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.tumor-image-1{
+    position: absolute;
+    top: 250px;
+    left: 735px;
+}
+
+.download-1{
+    position: absolute;
+    top: 570px;
+    left: 935px;
+    width: 138px;
+    height: 45px;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 10px;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+
+}
+
+.glaucoma-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.form-title {
+    text-align: center;
+    color: #333;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.patient-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2rem;
+}
+
+.common-inputs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.common-inputs select,
+.common-inputs input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Montserrat;
+}
+
+.eyes-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.eye-column {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+.eye-column h2 {
+    color: #333;
+    font-family: Montserrat;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.eye-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.eye-inputs input,
+.eye-inputs select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Montserrat;
+}
+
+.analyze-button {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    cursor: pointer;
+}
+
+.analyze-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.results-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.result-box {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+.result-box h3 {
+    color: #333;
+    font-family: Montserrat;
+    margin-bottom: 1rem;
+}
+
+.result-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .eyes-container {
+        flex-direction: column;
+    }
+
+    .common-inputs {
+        flex-direction: column;
+    }
+
+    .results-container {
+        flex-direction: column;
+    }
+}
+
+.Toastify__toast--error {
+    font-family: Montserrat;
+    background: #fff;
+    color: #e74c3c;
+    border-left: 4px solid #e74c3c;
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+}
+
+.loading-text {
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #333;
+    margin-top: 1rem;
+}

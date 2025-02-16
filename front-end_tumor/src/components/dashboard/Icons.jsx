@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export const Icons=() => {
   return (
-  
      <div className="drectangle" >
           <Link to="/" className="dtext-wrapper">Log out</Link>
           <Link to ="/profile" className="dtext-wrapper-2">Profile</Link>

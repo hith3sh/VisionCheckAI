@@ -6,11 +6,8 @@ import './History.css';
 
 export const History = () => {
   return (
-
     <div >
         <Icons/>
-      
-        
         <div className="hframe">
         <table class="htable">
   <thead class="thead-dark">
@@ -42,14 +39,8 @@ export const History = () => {
     </tr>
   </tbody>
 </table>
-
-
         </div>
         <div className="upload-history">Upload&nbsp;&nbsp;History</div>
-        
-        
-      
-      
     </div>
   );
 };
