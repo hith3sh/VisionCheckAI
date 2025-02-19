@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 import cv2
 import json
 import shap
-from gradcam import generate_gradcam
+from get_shap import generate_shap
+from get_gradcam import generate_gradcam
+
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -25,25 +27,11 @@ CORS(app)
 
 fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
 
-# def load_and_predict_shap_values():
-#     with open("shap_values.pkl", "rb") as file:
-#         shap_values = pickle.load(file)
-#     shap.summary_plot(shap_values, X_test)
-
-#     shap.dependence_plot('feature_name', shap_values, X_test)
-#     # For a specific instance, e.g., the first instance in the dataset
-#     shap.force_plot(shap_values[0], X_test.iloc[0])
-
-
-#     # Example for saving a summary plot
-#     shap.summary_plot(shap_values, X_test)
-#     plt.savefig("summary_plot.png", dpi=300, bbox_inches="tight")
-    # plt.close()
-
-# def gradcam_prediction(image):
-
-
-#     return result
+def get_original_image(image_bytes):
+    image_array = np.frombuffer(image_bytes, np.uint8)
+    image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert to RGB
+    return image
 
 def preprocess_image(image_bytes):
     image_array = np.frombuffer(image_bytes, np.uint8)
@@ -157,9 +145,12 @@ def predict():
         else: 
             gender = 0.0
                 
-        # Preprocess the image
+        # Preprocess the images
         left_eye_image = preprocess_image(image_bytes_left_eye)
         right_eye_image = preprocess_image(image_bytes_right_eye)
+        # get original images
+        original_left_image = get_original_image(image_bytes_left_eye)
+        original_right_image = get_original_image(image_bytes_right_eye)
 
 
         # Preprocess the tabular data
@@ -189,39 +180,37 @@ def predict():
                              rightEye
                              ]
 
-        
+        # tabualr data should be expanded dimensions before passing to shap and gradcam
         left_tabular_array = np.array([left_tabular_data_arr], dtype=np.float32) 
         right_tabular_array = np.array([right_tabular_data_arr], dtype=np.float32)
 
-        # (1, 224, 224, 3) - image input
-        # (1, 11) - tabular data input
-
-        # feed in to the fusion model  - left eye
+        # feed in to the fusion model  - left & right eye
         left_prediction = fusion_model.predict([left_eye_image, left_tabular_array])
-        # feed in to the fusion model  - right eye
         right_prediction = fusion_model.predict([right_eye_image, right_tabular_array])
-
-        # generate SHAP values
-        shap_values = explainer.shap_values([background_images_val_np, background_tabular_val_np])
-        shap.summary_plot(shap_values_tabular_class0, background_tabular_val.numpy(), feature_names=left_tabular_data_arr)
-
- 
+        
         # get glaucoma stage 
         left_glaucoma_stage = glaucoma_state(left_prediction)
         right_glaucoma_stage = glaucoma_state(right_prediction)
 
-        # create the numpy array form - for XAI
+        print("glaucoma prediction for right eye:",right_glaucoma_stage)
+        print("glaucoma prediction for left eye", left_glaucoma_stage)
 
-        print("glaucoma state for right eye:",right_glaucoma_stage)
-        print("glaucoma state for left eye", left_glaucoma_stage)
-
-        # Generate GradCAM for left and right eyes
-        left_gradcam_path = generate_gradcam(left_image_path, fusion_model)
-        right_gradcam_path = generate_gradcam(right_image_path, fusion_model)
+        # Explainable AI
+        # SHAP
+        left_shap_path = generate_shap(left_eye_image, left_tabular_array)
+        right_shap_path = generate_shap(right_eye_image, right_tabular_array)
+ 
+        # GradCAM
+        left_gradcam_path = generate_gradcam(original_left_image, left_eye_image, left_tabular_array)
+        right_gradcam_path = generate_gradcam(original_right_image, right_eye_image, right_tabular_array)
         
         return jsonify({
             "glaucoma_state_right_eye": right_glaucoma_stage,
-            "glaucoma_state_left_eye": left_glaucoma_stage
+            "glaucoma_state_left_eye": left_glaucoma_stage,
+            "left_shap_path": left_shap_path,
+            "right_shap_path": right_shap_path,
+            "left_gradcam_path": left_gradcam_path,
+            "right_gradcam_path": right_gradcam_path
             }),200
     
     except Exception as e:

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 
-image_path = 'cropped_image.jpg'
 
 def process_image(imagepath):
     image= cv2.imread(imagepath) 
