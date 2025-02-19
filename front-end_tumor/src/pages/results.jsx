@@ -21,7 +21,15 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
 const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
     '& .MuiAccordionSummary-content': {
         fontFamily: 'Montserrat',
+        width: '100%',
+        justifyContent: 'center',
     },
+    '& .MuiTypography-root': {
+        fontSize: '20px',
+        fontWeight: '600',
+        width: '100%',
+        textAlign: 'center',
+    }
 }));
 
 function Results() {
@@ -142,7 +150,7 @@ function Results() {
                                         <h4>GradCAM Visualization</h4>
                                         {results.left_gradcam_path && (
                                             <img 
-                                                src={results.left_gradcam_path} 
+                                                src={`/assets/gradcam_assets/${results.left_gradcam_path}`} 
                                                 alt="Left Eye GradCAM" 
                                                 className="xai-image"
                                             />
@@ -152,7 +160,7 @@ function Results() {
                                         <h4>SHAP Analysis</h4>
                                         {results.left_shap_path && (
                                             <img 
-                                                src={results.left_shap_path} 
+                                                src={`/assets/shap_assets/${results.left_shap_path}`} 
                                                 alt="Left Eye SHAP" 
                                                 className="xai-image"
                                             />
@@ -169,7 +177,7 @@ function Results() {
                                         <h4>GradCAM Visualization</h4>
                                         {results.right_gradcam_path && (
                                             <img 
-                                                src={results.right_gradcam_path} 
+                                                src={`/assets/gradcam_assets/${results.right_gradcam_path}`} 
                                                 alt="Right Eye GradCAM" 
                                                 className="xai-image"
                                             />
@@ -179,7 +187,7 @@ function Results() {
                                         <h4>SHAP Analysis</h4>
                                         {results.right_shap_path && (
                                             <img 
-                                                src={results.right_shap_path} 
+                                                src={`/assets/shap_assets/${results.right_shap_path}`} 
                                                 alt="Right Eye SHAP" 
                                                 className="xai-image"
                                             />
@@ -193,7 +201,7 @@ function Results() {
             </div>
 
             <div className="actions">
-                <button onClick={() => navigate('/upload')} className="new-scan-button">
+                <button onClick={() => navigate('/uploadretinal')} className="new-scan-button">
                     New Scan
                 </button>
                 <button onClick={() => window.print()} className="print-button">
