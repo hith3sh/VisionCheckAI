@@ -218,7 +218,6 @@ left: 46px;
     position: absolute;
     top: 2000px;
     left: 575px;
- 
     color: #000;
     text-align: center;
     font-family: Montserrat;
@@ -237,4 +236,10 @@ left: 46px;
     left: 10vw;
     top: 2130px;
     min-width: 0;
+}
+
+.white-logo {
+    width: 350px;  /* even smaller */
+    height: auto;
+    margin: 20px;
 }

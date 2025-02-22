@@ -40,7 +40,7 @@ A comprehensive web application for detecting glaucoma using deep learning and e
 
 ### Frontend Setup
 bash
-``cd fyp/front-end_tumor``
+``cd fyp/front-end``
 ``npm install``
 ``npm start``
 

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import os
 import uuid
 
-SHAP_ASSETS_DIR = os.path.abspath('../front-end_tumor/public/assets/shap_assets')
+SHAP_ASSETS_DIR = os.path.abspath('../front-end/public/assets/shap_assets')
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
 
 fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
