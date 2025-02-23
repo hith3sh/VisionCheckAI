@@ -57,6 +57,11 @@ function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log('User logged in:', user);
+
+      //get the JWT token
+      const token = await user.getIdToken();
+      console.log('JWT token:', token);
+      
       navigate('/dashboard', { replace: true });
     } catch (error) {
       console.error('Login error:', error.message);
