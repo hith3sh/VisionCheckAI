@@ -3,44 +3,47 @@ import "./aboutus.css";
 import rectangle1195 from '../assets/Rectangle 1195.png';
 import img5 from '../assets/img 5.png';
 
-export const  Aboutus = () =>  {
+export const Aboutus = () => {
   return (
     <div className="about-us">
       <div className="div">
-        
         <div className="overlap-group">
           <div className="text-wrapper-2">Our Goal</div>
-          <p className="empowering-medical">
-            Empowering Medical Professionals <br />
-            Advancing Medical Research <br />
-            Promoting Transparency and Explainability <br />
-            Data Privacy <br />
-            Enhancing Patient Care
-          </p>
-          <div className="element">
-           
-              <img className="vector" alt="Vector" src={img5} />
-           
-          </div>
-          <div className="overlap-wrapper">
+          <div className="goals-list">
+            <div className="goal-row">
+              <div className="element">
+                <img className="vector" alt="Vector" src={img5} />
+              </div>
+              <span className="goal-text">Empowering Medical Professionals</span>
+            </div>
             
-              <img className="vector" alt="Vector" src={img5}  />
+            <div className="goal-row">
+              <div className="element">
+                <img className="vector" alt="Vector" src={img5} />
+              </div>
+              <span className="goal-text">Advancing Medical Research</span>
+            </div>
             
-          </div>
-          <div className="overlap-group-wrapper">
+            <div className="goal-row">
+              <div className="element">
+                <img className="vector" alt="Vector" src={img5} />
+              </div>
+              <span className="goal-text">Promoting Transparency and Explainability</span>
+            </div>
             
-              <img className="vector" alt="Vector" src={img5}  />
+            <div className="goal-row">
+              <div className="element">
+                <img className="vector" alt="Vector" src={img5} />
+              </div>
+              <span className="goal-text">Data Privacy</span>
+            </div>
             
-          </div>
-          <div className="element-2">
-            
-              <img className="vector" alt="Vector" src={img5}  />
-          
-          </div>
-          <div className="element-3">
-            
-              <img className="vector" alt="Vector" src={img5}  />
-           
+            <div className="goal-row">
+              <div className="element">
+                <img className="vector" alt="Vector" src={img5} />
+              </div>
+              <span className="goal-text">Enhancing Patient Care</span>
+            </div>
           </div>
           <img className="rectangle" alt="Rectangle" src={rectangle1195}/>
         </div>

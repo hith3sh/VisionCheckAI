@@ -21,15 +21,11 @@ export const  Landingpage = () => {
       Empowering Glaucoma Detection With AI
       </span>
     </p>
-    <p className='subline'>
+    {/* <p className='subline'>
       Using your Retinal Images we predict whether your patient has Glaucoma or not faster with the help of latest AI Technologies.
-    </p>
+    </p> */}
     <Link to='/login'><Button className='scannow'>Scan Now</Button></Link>
-    <Element name="whoWeServe">
-    <section id='whoWeServe'>
-    <p className='whoweserve'>
-      WHO WE SERVE
-    </p>
+    <Element name="whoWeServe"> <section id='whoWeServe'> <p className='whoweserve'>WHO WE SERVE</p>
     <div className='whoweservebox'>
     <div className='whoweservebox-1'>
       <p className='mprof'>MEDICAL PROFESSIONALS</p>

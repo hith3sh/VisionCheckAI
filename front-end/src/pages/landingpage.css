@@ -3,7 +3,7 @@
     width: 500px;
     height: 500px;
     flex-shrink: 0;
-    left: 1180px;
+    left: 900px;
     top: 150px;
     min-width: 0;
 }
@@ -45,21 +45,6 @@ line-height: 80px;
 }
 
 
-.whoweserve {
-    position: absolute;
-    top: 100vh;
-    left: 40px;
-    font-family: Montserrat;
-    font-size: 34px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 7.82px;
-    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 .subline {
     position: absolute;
@@ -110,9 +95,28 @@ line-height: 80px;
 
 }
 
+.whoweserve {
+    height: auto;
+    position: absolute;
+    top: 100vh;
+    left: 40px;
+    font-family: Montserrat;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: normal;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 .whoweservebox{
     position: absolute;
     display: flex;
+    flex-wrap: wrap;
     justify-content:space-around;
     top:850px;
     width: 100vw;
@@ -225,6 +229,7 @@ left: 46px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    white-space: nowrap;
 }
 
 

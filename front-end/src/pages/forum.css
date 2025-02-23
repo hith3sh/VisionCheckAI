@@ -54,6 +54,12 @@
     text-shadow: 0px 4px 41px #00000017;
     top: 540px;
     white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .forum .text-wrapper:hover {
+    color: #3A8EF6;  /* or any color that matches your theme */
   }
   
   .forum .text-wrapper-2 {

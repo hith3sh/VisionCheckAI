@@ -104,7 +104,7 @@
 
   .login{
     position: absolute;
-    left: 1250px;
+    left: 81vw;
     top: 15px;
     height: 41.479px;    
     width: 110.611px;
@@ -148,7 +148,7 @@
 
   .register{
     position: absolute;
-    left: 1370px;
+    left: 90vw;
     top: 15px;
     width: 110.611px;
     height: 41.479px;

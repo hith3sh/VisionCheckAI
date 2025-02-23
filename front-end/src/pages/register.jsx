@@ -69,6 +69,16 @@ function Register() {
       setCurrentError('');
     }
   }
+  
+  // Add this new validation function after other validation functions
+  const validatePassword = () => {
+    if (formData.password.length < 6) {
+      setCurrentError('password-length');
+      return false;
+    }
+    return true;
+  };
+  
    //==========================================hande firebase=================================================================
 
    // Initialize Firebase
@@ -82,46 +92,52 @@ function Register() {
  
    const handleRegister = async (e) => {
      e.preventDefault();
-     // Check contact number validity before proceeding
      validateContact();
      validateEmail();
      validatePasswordMatch();
+     validatePassword();  // Add password length validation
      
      if (currentError) {
-      setShowError(true);
-      return;
-    }
-    
-       try {
-         const newData = {
-           key1: formData.email,
-           key2: formData.password,
-           key3: formData.firstname,
-           key4 : formData.lastname,
-           key5: formData.contactno,
-           key6 : formData.medicals,
-           key7 : formData.title,
-           key8: formData.confirm
-           
-         };
-       const FiredataRef = collection(fire_db,'users')
-       try {
-         const docRef = await addDoc(FiredataRef, newData);
-         console.log('Document written with ID: ', docRef.id);
-         
-       } catch (e) {
-         console.error('Error adding document: ', e);
-       }
+       setShowError(true);
+       return;
+     }
+
+     try {
+       // First create the authentication user
        const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
        const user = userCredential.user;
-       console.log('User logged in:', user);
-       navigate('/dashboard', { replace: true });
-       
- 
+
+       // Prepare the data for Firestore
+       const newData = {
+         email: formData.email,
+         firstname: formData.firstname,
+         lastname: formData.lastname,
+         contactno: formData.contactno,
+         medicals: formData.medicals,
+         title: formData.title,
+         createdAt: new Date(),
+         userId: user.uid  // Add the user's UID for reference
+       };
+
+       // Try to add the data to Firestore
+       try {
+         const FiredataRef = collection(fire_db, 'users');
+         const docRef = await addDoc(FiredataRef, newData);
+         console.log('Document written with ID: ', docRef.id);
+         navigate('/dashboard', { replace: true });
+       } catch (firestoreError) {
+         console.error('Error adding document to Firestore: ', firestoreError);
+         // If Firestore fails, we should delete the auth user
+         await user.delete();
+         setCurrentError('firestore');
+         setShowError(true);
+         throw new Error('Failed to save user data');
+       }
+
      } catch (error) {
-       console.error('Register:', error.message);
-       setShowError(true);  // Display the error popup
-       //alert('registeration successful');
+       console.error('Registration error:', error.message);
+       setCurrentError('auth');
+       setShowError(true);
      }
    };
  
@@ -131,7 +147,6 @@ function Register() {
     <div className="registeration">
       
       <div onSubmit={handleRegister} className="form" >
-      <div className="rectangle"/>
         <div className="overlap-group">
           <div className="rectangle-1" /*white rectangle*//>
           <select className="input-11" type="text" name="title" placeholder="Title"  value={formData.title} onChange={handleChange}>
@@ -202,11 +217,17 @@ function Register() {
           <ErrorPopup
             message={
               currentError === 'email'
-                ? 'Please Enter a valied email address'
+                ? 'Please Enter a valid email address'
                 : currentError === 'contact no'
-                ? 'Please Enter a valied contact number'
+                ? 'Please Enter a valid contact number'
                 : currentError === 'password'
                 ? 'Password confirmation does not match'
+                : currentError === 'password-length'
+                ? 'Password must be at least 6 characters long'
+                : currentError === 'firestore'
+                ? 'Failed to save user data. Please try again.'
+                : currentError === 'auth'
+                ? 'Registration failed. This email might already be in use.'
                 : 'An error occurred during registration.'
             }
             onClose={() => setShowError(false)}

@@ -51,3 +51,6 @@ ENV/
 ENV.bak/
 venv.bak/
 *.log
+
+#json
+glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json
