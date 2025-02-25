@@ -4,11 +4,13 @@ import cv2
 import matplotlib.pyplot as plt
 import os
 import uuid
+from model_loader import get_model
+
+
 GRADCAM_ASSETS_DIR = os.path.abspath('../front-end/public/assets/gradcam_assets')
 os.makedirs(GRADCAM_ASSETS_DIR, exist_ok=True)
-print(f"GradCAM directory created at: {GRADCAM_ASSETS_DIR}")
 
-model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
+model = get_model()
 
 # def preprocess_image(image_bytes):
 #     image = cv2.imread(image_bytes)

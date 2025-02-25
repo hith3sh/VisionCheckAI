@@ -8,11 +8,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 import uuid
+from model_loader import get_model
+
 
 SHAP_ASSETS_DIR = os.path.abspath('../front-end/public/assets/shap_assets')
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
 
-fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl')
+
+fusion_model = get_model()
 
 tabular_features = [
     "Age", "dioptre_1", "dioptre_2", "astigmatism",
@@ -20,7 +25,7 @@ tabular_features = [
     "Axial_Length", "VF_MD", "Gender", "Eye"
 ]
 
-with open('../weights/shap_explainer.pkl', 'rb') as f:
+with open(PICKLE_PATH, 'rb') as f:
     explainer = pickle.load(f)
 
 def generate_shap(image, tabular_data):

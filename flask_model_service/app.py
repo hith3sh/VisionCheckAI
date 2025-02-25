@@ -12,7 +12,7 @@ import json
 import shap
 from get_shap import generate_shap
 from get_gradcam import generate_gradcam
-
+from get_shap import fusion_model
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -25,7 +25,7 @@ crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, widt
 app = Flask(__name__)
 CORS(app)
 
-fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
+#fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
 
 def get_original_image(image_bytes):
     image_array = np.frombuffer(image_bytes, np.uint8)

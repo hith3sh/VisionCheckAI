@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import './login.css';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import {firebaseApp} from '../firebase';
 import { useNavigate } from 'react-router-dom';
-
-import axios from 'axios';
+import { apiCall } from '../utils/get';
 
 // Use Firebase Auth
 
@@ -60,14 +58,25 @@ function Login() {
 
       //get the JWT token
       const token = await user.getIdToken();
-      console.log('JWT token:', token);
-      
+      // Verify the token with the backend
+      const response = await apiCall('verify-token', {
+        method: 'POST',
+        body: JSON.stringify({ token })
+      });
+      localStorage.setItem('token', token);
+      console.log('token saved on local storage');
       navigate('/dashboard', { replace: true });
+
     } catch (error) {
       console.error('Login error:', error.message);
-      alert('invalid credentials');
+      if (error.code === 'auth/wrong-password') {
+        alert('Incorrect password. Please try again.');
+      } else if (error.code === 'auth/user-not-found') {
+        alert('No account found with this email.');
+      } else {
+        alert('Login failed. Please check your network and try again.');
+      }
     }
-    
   };
 
   //===============================================================================================================

@@ -8,13 +8,10 @@ import  ContactUs  from './pages/contactus';
 import  NoPage  from './pages/nopage';
 import Login from './pages/login';
 import { UploadRetinal } from './pages/uploadretinal';
-import { fetchData } from './utils/get';
 import Register from './pages/register';
 import {Dashboard} from './pages/dashboard';
 import Forum from './pages/forum';
-import axios from 'axios';
 import Results from './pages/results';
-import Question from './pages/question';
 import History from './pages/history';
 import Profile from './pages/profile';
 
@@ -29,15 +26,7 @@ function App() {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetchData()
-      .then(data => {
-        setData(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, []);
+
 
   
   return (
@@ -61,7 +50,6 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/forum" element={<Forum />} />
       <Route path="/results" element={<Results />} />
-      <Route path="/question" element={<Question />} />
       <Route path="/history" element={<History />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>

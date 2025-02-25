@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { GridLoader } from 'react-spinners';
+import { getAuth } from 'firebase/auth';
 
 export const UploadRetinal = () => {
     const navigate = useNavigate();
@@ -73,16 +74,35 @@ export const UploadRetinal = () => {
             return;
         }
 
+        // Check authentication first
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (!user) {
+            toast.error('Please log in to continue', {
+                onClose: () => {
+                    // Navigate after toast is closed
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 1000);
+                }
+            });
+            return;
+        }
+
         try {
-            setIsLoading(true);  // Start loading
+            setIsLoading(true);
+            const token = await user.getIdToken();
+
             const submitData = new FormData();
             submitData.append('leftImage', leftEyeImage);
             submitData.append('rightImage', rightEyeImage);
             submitData.append('data', JSON.stringify(formData));
 
-            console.log('Sending data to backend...');
             const response = await fetch('http://localhost:8080/api/v1/submit', {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
                 body: submitData
             });
 
@@ -102,7 +122,7 @@ export const UploadRetinal = () => {
             toast.error('An error occurred during analysis');
             console.error('Error:', error);
         } finally {
-            setIsLoading(false);  // Stop loading
+            setIsLoading(false);
         }
     };
 
