@@ -10,11 +10,11 @@ import os
 import uuid
 from model_loader import get_model
 
-
-SHAP_ASSETS_DIR = os.path.abspath('../front-end/public/assets/shap_assets')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
+SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets')
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl')
 
 fusion_model = get_model()
