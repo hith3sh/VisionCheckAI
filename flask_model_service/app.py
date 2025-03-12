@@ -18,14 +18,13 @@ crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, widt
 # 'OS' (left eye): 0,
 #  'OD' (right eye): 1
 # Diagnosis	
-# 0	-> 333  #normal control
-# 1	-> 87   # early glaucoma
-# 2	-> 68   # advanced glaucoma
+# 0	-> normal control
+# 1	-> early glaucoma
+# 2	-> advanced glaucoma
 
 app = Flask(__name__)
 CORS(app)
 
-#fusion_model = tf.keras.models.load_model('../weights/glaucoma_cnn_model.h5')
 
 def get_original_image(image_bytes):
     image_array = np.frombuffer(image_bytes, np.uint8)
@@ -109,24 +108,24 @@ def predict():
         age = handle_empty(data_dict.get("age"), None)
 
         # Left eye measurements
-        leftDioptre1 = handle_empty(data_dict.get("leftDioptre1"), 0.75)
-        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"), -1.0)
-        leftAstigmatism = handle_empty(data_dict.get("leftAstigmatism"), 90)
+        leftDioptre1 = handle_empty(data_dict.get("leftDioptre1"), -0.071738)
+        leftDioptre2 = handle_empty(data_dict.get("leftDioptre2"), 0.0018)
+        leftAstigmatism = handle_empty(data_dict.get("leftAstigmatism"),  0.047846)
         leftLens = handle_empty(data_dict.get("leftLens"), 'no')
-        leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 16.26)
-        leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 536.93)
-        leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 23.55)
+        leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 0.163287)
+        leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 0.969737)
+        leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 0.096287)
         leftVFMD = handle_empty(data_dict.get("leftVFMD"), -2.39)
         leftEye = 1.0
 
         # Right eye measurements  
-        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), 0.75)
-        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"), -1.0)
-        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"), 90)
+        rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), -0.071738)
+        rightDioptre2 = handle_empty(data_dict.get("rightDioptre2"), 0.0018)
+        rightAstigmatism = handle_empty(data_dict.get("rightAstigmatism"),0.047846)
         rightLens = handle_empty(data_dict.get("rightLens"), 'no')
-        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"), 16.26)
-        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 536.93)
-        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"), 23.55)
+        rightPneumatic = handle_empty(data_dict.get("rightPneumatic"),  0.163287)
+        rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 0.969737)
+        rightAxialLength = handle_empty(data_dict.get("rightAxialLength"),  0.096287)
         rightVFMD = handle_empty(data_dict.get("rightVFMD"), -2.39)
         rightEye = 0.0
 

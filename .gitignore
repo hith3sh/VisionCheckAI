@@ -54,3 +54,9 @@ venv.bak/
 
 #json
 glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json
+
+#images
+*.png
+
+#weights
+*.h5
