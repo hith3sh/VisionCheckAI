@@ -13,7 +13,7 @@ os.makedirs(GRADCAM_ASSETS_DIR, exist_ok=True)
 
 model = get_model()
 
-def generate_gradcam(original_image, image, tabular_data, layer_name='conv2d_1'):
+def generate_gradcam(original_image, image, tabular_data, layer_name='conv2d_2'):
     try:
         # Generate a random filename using UUID
         filename = f'gradcam_{uuid.uuid4()}.png'

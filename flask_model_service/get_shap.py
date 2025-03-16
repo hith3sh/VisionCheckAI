@@ -19,11 +19,7 @@ PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl')
 
 fusion_model = get_model()
 
-tabular_features = [
-    "Age", "dioptre_1", "dioptre_2", "astigmatism",
-    "Phakic_Pseudophakic", "Pneumatic", "Pachymetry",
-    "Axial_Length", "VF_MD", "Gender", "Eye"
-]
+tabular_features = ["Age", "Gender", "dioptre_1", "dioptre_2","astigmatism","Phakic_Pseudophakic","Pneumatic","Pachymetry","Axial_Length"]
 
 with open(PICKLE_PATH, 'rb') as f:
     explainer = pickle.load(f)

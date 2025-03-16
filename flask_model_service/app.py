@@ -153,8 +153,8 @@ def predict():
 
 
         # Preprocess the tabular data
-        left_tabular_data_arr = [gender, 
-                            age,
+        left_tabular_data_arr = [age, 
+                            gender,
                             leftDioptre1,
                             leftDioptre2,
                             leftAstigmatism,
@@ -162,12 +162,10 @@ def predict():
                             leftPneumatic,
                             leftPachymetry,
                             leftAxialLength,
-                            leftVFMD,
-                            leftEye
                             ]
         
-        right_tabular_data_arr = [gender, 
-                             age,
+        right_tabular_data_arr = [age, 
+                             gender,
                              rightDioptre1,
                              rightDioptre2, 
                              rightAstigmatism,
@@ -175,8 +173,6 @@ def predict():
                              rightPneumatic,
                              rightPachymetry,
                              rightAxialLength,
-                             rightVFMD,
-                             rightEye
                              ]
 
         # tabualr data should be expanded dimensions before passing to shap and gradcam
