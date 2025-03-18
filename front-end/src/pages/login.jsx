@@ -3,6 +3,9 @@ import './login.css';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { apiCall } from '../utils/get';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Use Firebase Auth
 
@@ -70,11 +73,15 @@ function Login() {
     } catch (error) {
       console.error('Login error:', error.message);
       if (error.code === 'auth/wrong-password') {
-        alert('Incorrect password. Please try again.');
+        toast.error('Incorrect password. Please try again.');
       } else if (error.code === 'auth/user-not-found') {
-        alert('No account found with this email.');
+        toast.error('No account found with this email.');
+      }else if (error.code === 'auth/invalid-email'){
+        toast.error(' Invalid email. Please try again.');
+      }else if (error.code === 'auth/invalid-login-credentials'){
+          toast.error('Invalid login credentials. Please try again.');
       } else {
-        alert('Login failed. Please check your network and try again.');
+        toast.error('Login failed due to a server error. Please try again later.');
       }
     }
   };
@@ -83,7 +90,7 @@ function Login() {
   return (
     <div className="login-1">
       <div className="img">
-       {/*<img className='backimage'src="/back2.jpg" />*/}
+       {/* <img className='backimage'src="/back2.jpg" /> */}
       </div>
       <div className="login-content ">
         <form onSubmit={handleLogin}  >
@@ -124,12 +131,12 @@ function Login() {
           </div>
           
           </div>
-          <a href="#">Forgot Password?</a>
+          <Link to="/reset-password">Forgot Password?</Link>
           <input onClick={handleLogin} type="submit" className="btn" value="Login" />
          
         </form>
       </div>
-      
+      <ToastContainer />
     </div>
     );
 }

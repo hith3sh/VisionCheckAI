@@ -137,23 +137,24 @@
     width: 309px;
   }
   
-   .dtumor-ai {
+  .dtumor-ai {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent;
     background: linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
     background-clip: text;
     color: transparent;
     font-family: "Montserrat-Bold", Helvetica;
-    font-size: 43.2px;
+    font-size: 40px;
     font-weight: 400;
     height: 53px;
-    left: 114px;
+    /* left: 114px; */
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-fill-color: transparent;
     top: 0px;
-  }
+    width: 300px; /* Add or modify this line to increase the width */
+}
   
    .dspan {
     color: #1678f2;
@@ -166,11 +167,11 @@
   }
   
    .dnavy-modern-AI {
-    height: 116px;
+    height: 100px;
     left: 0;
     position: absolute;
     top: 0;
-    width: 120px;
+    width: 100px;
   }
   
    .dimage {

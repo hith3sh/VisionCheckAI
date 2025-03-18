@@ -9,6 +9,7 @@ import  {CustFooter}  from '../components/landingpage/footer';
 import {UploadRetinal} from './uploadretinal'
 import { Outlet, Link } from "react-router-dom";
 import { Element } from 'react-scroll';
+import { FaStethoscope, FaGlobe, FaHeart } from "react-icons/fa";
 
 export const  Landingpage = () => {
   return (
@@ -21,34 +22,59 @@ export const  Landingpage = () => {
       Empowering Glaucoma Detection With AI
       </span>
     </p>
-    {/* <p className='subline'>
-      Using your Retinal Images we predict whether your patient has Glaucoma or not faster with the help of latest AI Technologies.
-    </p> */}
-    <Link to='/login'><Button className='scannow'>Scan Now</Button></Link>
-    <Element name="whoWeServe"> <section id='whoWeServe'> <p className='whoweserve'>WHO WE SERVE</p>
+
+
+    <div className="scannow-container">
+      <Link to="/login">
+        <button className="scannow">Scan Now</button>
+      </Link>
+    </div>
+
+    {/* <Link to='/login'><Button className='scannow'>Scan Now</Button></Link> */}
+
+    <Element name="whoWeServe"> <section id='whoWeServe'> <p className='whoweserve'></p>
     <div className='whoweservebox'>
-    <div className='whoweservebox-1'>
-      <p className='mprof'>MEDICAL PROFESSIONALS</p>
-      <p className='mprof-cnt'>Our advanced Glaucoma identification system is tailored to support medical professionals across various disciplines. Utilize our Artificial intelligence models to accurately identify Glaucoma conditions and aid in treatment planning.</p>
-    </div>
+      <div className='whoweservebox-1'>
+      <div className='glohealth'>
+          <FaStethoscope size={40} className="icon" />
+          <h3>MEDICAL PROFESSIONALS</h3>
+      </div>
+        <p className='mprof-cnt1'>Our advanced Glaucoma identification system is tailored 
+          to support medical professionals across various disciplines. 
+          Utilize our Artificial intelligence models to accurately identify 
+          Glaucoma conditions and aid in treatment planning.</p>
+      </div>
+
     <div className='whoweservebox-2'>
-    <p className='glohealth'>GLOBAL HEALTH</p>
-    <p className='mprof-cnt'>we're dedicated to advancing global health by making advanced Glaucoma detection accessible worldwide. We believe that everyone, regardless of location or resources, should have the opportunity to benefit from cutting-edge medical technology</p>
+      <div className='glohealth'>
+          <FaGlobe size={40} className="icon" />
+          <h3>GLOBAL HEALTH</h3>
+      </div>
+      <p className='mprof-cnt2'>we're dedicated to advancing global health by making 
+        advanced Glaucoma detection accessible worldwide. We believe that everyone, 
+        regardless of location or resources, should have the opportunity to benefit 
+        from cutting-edge medical technology</p>
     </div>
+
     <div className='whoweservebox-3'>
-    <p className='glohealth'>IMPROVED QUALITY OF LIFE</p>
-    <p className='mprof-cnt'>With early detection and personalized care, our aim is to enhance the quality of life for individuals affected by Glaucoma.</p>
+      <div className='glohealth'>
+          <FaGlobe size={40} className="icon" />
+          <h3>IMPROVED QUALITY OF LIFE</h3>
+      </div>
+      <p className='mprof-cnt3'>
+      With a strong focus on early detection and tailored, personalized care, our goal is 
+      to significantly enhance the overall quality of life for individuals affected by Glaucoma, 
+      empowering them with better management strategies and improved long-term outcomes.</p>
     </div>
     </div>
     </section>
     </Element>  
    <Element name='ourSolutions'>
-   <section id='ourSolutions'>
-    
-    <p className='oursolution'>OUR SOLUTIONS</p>
-    <Oursolutions/>
-    <div className='line'></div>
-    </section>
+    <section id='ourSolutions'>
+        {/* <p className='oursolution'>OUR SOLUTIONS</p> */}
+        <Oursolutions/>
+        <div className='line'></div>
+      </section>
    </Element>
     
     <section id='howToUse'>

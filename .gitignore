@@ -59,4 +59,5 @@ glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json
 *.png
 
 #weights
+*.bz2
 *.h5

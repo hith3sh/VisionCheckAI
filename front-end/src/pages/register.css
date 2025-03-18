@@ -1,5 +1,6 @@
 .registeration {
-  background-image:url('https://affiliatedmedicalconsulting.files.wordpress.com/2021/05/affiliated-medical-consulting.jpg?w=1024');
+  /* background-image:url('https://affiliatedmedicalconsulting.files.wordpress.com/2021/05/affiliated-medical-consulting.jpg?w=1024'); */
+  background: url(src/assets/register.jpg);
   background-size: cover;
   display: flex;
   flex-direction: row;
@@ -31,7 +32,7 @@ color: black;
 }
 /*total page*/ 
 .registeration .overlap-group {
-  height: 820px;
+  height: 910px;
   left: 598px;
   position: relative;
   top: 50px;
@@ -40,19 +41,6 @@ color: black;
   flex-direction: row;
   gap: 30px;}
 
-/* .registeration .rectangle {
-  background-image: url('https://www.levinlaw.com/sites/default/files/images/hernia-mesh-litigation_0.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0px;
-  border: 1px solid #FFF;
-  box-shadow: 0px 0px 60px 1px rgba(0, 0, 0, 0.25);
-  height: 90vh;
-  left: 125px;
-  position: absolute;
-  top: 50px;
-  width: 600px;
-} */
  
 .registeration .rectangle-1 {
   background-color: transparent;
@@ -78,7 +66,7 @@ height: 50px;
 left: 56px;
 padding-left: 20px;
 position: absolute;
-top: 120px;
+top: 140px;
 width: 240px;
 }
 
@@ -92,7 +80,7 @@ height: 50px;
 left: 330px;
 padding-left: 20px;
 position: absolute;
-top: 120px;
+top: 140px;
 width: 230px;
 }
 /*title*/
@@ -106,9 +94,19 @@ left: 56px;
 padding-left: 20px;
 padding-right: 20px;
 position: absolute;
-top: 40px;
+top: 60px;
 width: 508px;
 }
+.registeration .register-txt {
+  height: 50px;
+  left: 56px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  top: 10px;
+  width: 508px;
+  }
+
 .rectangle-1.error-message2 {
   color: blue; /* or any other color you prefer */
   font-size: 20px; /* adjust the font size as needed */
@@ -117,14 +115,6 @@ width: 508px;
   text-transform: uppercase;
   margin-left: 10px;
   font-weight: 500;
-}
-select.input-11 option {
-  font-size: 16px;
-  font-family: "Montserrat-Bold", Helvetica;
-  color: #999; /* Change color to a grayish tone */
-}
-select.input-11 option[value=""] {
-  display: none; /* Hide the option visually */
 }
 
 /*contact number*/
@@ -136,12 +126,10 @@ box-shadow: 0px 4px 4px #00000040;
 height: 50px;
 left: 56px;
 position: absolute;
-top: 200px;
+top: 220px;
 padding-left: 20px;
 width: 508px;
 }
-
-
 
 /*medical specialization*/
 .registeration .input-7 {
@@ -153,7 +141,7 @@ height: 50px;
 left: 56px;
 position: absolute;
 padding-left: 20px;   
-top: 280px;
+top: 300px;
 width: 508px;
 }
 
@@ -167,7 +155,7 @@ height: 50px;
 left: 56px;
 padding: 20px;
 position: absolute;
-top: 440px;
+top: 460px;
 font-size: 16px;
 width: 508px;
 }
@@ -180,7 +168,7 @@ box-shadow: 0px 4px 4px #00000040;
 height: 50px;
 left: 56px;
 position: absolute;
-top: 520px;
+top: 540px;
 padding: 20px;
 font-size: 16px;
 width: 508px;
@@ -196,7 +184,7 @@ height: 50px;
 left: 56px;
 padding-left:20px;
 position: absolute;
-top: 360px;
+top: 380px;
 width: 508px;
 }
 
@@ -239,7 +227,7 @@ background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.7
 	width: 40%;
 	height: 50px;
   left: 56px;
-  top: 590px;
+  top: 650px;
   position: absolute;
 	border-radius: 10px;
 	outline: none;
@@ -258,6 +246,48 @@ background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.7
 .btn-Reg:hover{
 	background-position: right;
 }
+
+
+
+.terms-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 620px; /* Adjust position as needed */
+  left: 56px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+  color: white;
+  width: auto; /* Ensures it only takes as much space as needed */
+  white-space: nowrap; /* Prevents text from breaking into a new line */
+  min-width: 300px; /* Adjust as necessary */
+}
+.terms-label {
+  display: inline;
+  margin-left: 8px;
+  white-space: nowrap; /* Ensure it stays in one line */
+}
+
+.terms-link {
+  font-size: 10px;
+  text-decoration: underline;
+  color: #999;
+  white-space: nowrap; /* Prevents the link from breaking */
+}
+
+
+
+select.input-11 option {
+  font-size: 16px;
+  font-family: "Montserrat-Bold", Helvetica;
+  color: #999; /* Change color to a grayish tone */
+}
+select.input-11 option[value=""] {
+  display: none; /* Hide the option visually */
+}
+
+
 @media screen and (max-width: 1050px){
 	.registeration{
 		grid-gap: 5rem;
@@ -268,20 +298,15 @@ background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.7
 	form{
 		width: 290px;
 	}
-
 }
 
 @media screen and (max-width: 900px){
-	
-
-
   .overlap-group{
     display: flex; /* Change to flex display */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     min-height: 100vh; /* Ensure it covers the full viewport height */
-  }
-
+  } 
 	.form{
 		justify-content: center;
 	}

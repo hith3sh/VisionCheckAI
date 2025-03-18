@@ -105,20 +105,20 @@
   .login{
     position: absolute;
     left: 81vw;
-    top: 15px;
+    top: 25px;
     height: 41.479px;    
-    width: 110.611px;
+    width: 120px;
     flex-shrink: 0;
     border-radius: 14.506px;
-  background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
-  color: #FFF;
-  text-align: center;
-  font-family: Montserrat;
-  font-size: 16.789px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1.007px;
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16.789px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.007px;
   }
 
   .login:hover{
@@ -149,8 +149,8 @@
   .register{
     position: absolute;
     left: 90vw;
-    top: 15px;
-    width: 110.611px;
+    top: 25px;
+    width: 120px;
     height: 41.479px;
     flex-shrink: 0;
     border-radius: 14.506px;

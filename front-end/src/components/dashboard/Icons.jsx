@@ -14,10 +14,9 @@ export const Icons=() => {
           <div className="dgroup">
             <div className="doverlap-group">
               <p className="dtumor-ai">
-                <span className="dspan">VisionCheck</span>
-                <span className="dtext-wrapper-5">.ai</span>
+                <span className="dspan">VisionCheck.ai</span>
               </p>
-              <img className="dnavy-modern-AI" alt="Navy modern AI" src={Navy} />
+              {/* <img className="dnavy-modern-AI" alt="Navy modern AI" src={Navy} /> */}
             </div>
           </div>
           <img className="dimage" alt="Image" src={ image18 } />

@@ -9,20 +9,27 @@ import matplotlib.pyplot as plt
 import os
 import uuid
 from model_loader import get_model
+import keras
+from tensorflow.keras.layers import Layer
+import bz2
+
+fusion_model = get_model()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
 SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets')
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
 
-PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl')
-
-fusion_model = get_model()
+PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl.bz2')
 
 tabular_features = ["Age", "Gender", "dioptre_1", "dioptre_2","astigmatism","Phakic_Pseudophakic","Pneumatic","Pachymetry","Axial_Length"]
 
-with open(PICKLE_PATH, 'rb') as f:
+
+with bz2.BZ2File(PICKLE_PATH, 'rb') as f:
     explainer = pickle.load(f)
+
+# with open(PICKLE_PATH, 'rb') as f:
+#     explainer = pickle.load(f)
 
 def generate_shap(image, tabular_data):
     try:

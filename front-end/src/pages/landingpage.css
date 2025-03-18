@@ -1,16 +1,16 @@
 .logo2 {
     position: absolute;
-    width: 500px;
+    width: 1000px;
     height: 500px;
     flex-shrink: 0;
-    left: 900px;
-    top: 150px;
+    left: 700px;
+    top: 200px;
     min-width: 0;
 }
 
 .headingtxt {
     position: absolute;
-    top: 50px;
+    top: 100px;
     left: 40px;
     width: 720px;
     height: 420px;
@@ -71,29 +71,40 @@ line-height: 80px;
     z-index: 1;
 }
 
-
+.scannow-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 600px;
+    padding-left: 15vw;
+}
 .scannow {
-    position: absolute;
-    top: 80vh;
-    left: 7vw;
-    width: 14vw;
-    height: 8vh;
-    flex-shrink: 0;
-    border-radius: 11.25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14rem; /* Fixed width instead of vw */
+    height: 3rem; /* Adjust height */
+    border-radius: 11px;
     background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #FFF;
-    font-family: Montserrat;
-    font-size: 22.435px;
-    font-style: normal;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.2rem;
     font-weight: 600;
-    line-height: normal;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease-in-out;
 }
 
 .scannow:hover {
     background: linear-gradient(96deg, #6F3AFA -10.84%, #3A8EF6 196.74%);
 
 }
+
+
+
+
 
 .whoweserve {
     height: auto;
@@ -176,18 +187,44 @@ position: relative;
 top: 20px;
 }
 
-.mprof-cnt {
+.mprof-cnt1{
     position: relative;
     top: 30px;
     color: #000;
     width: 300px;
-text-align: center;
-font-family: Montserrat;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-left: 46px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    left: 8px;
+}
+.mprof-cnt2{
+    position: relative;
+    top: 30px;
+    color: #000;
+    width: 300px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    left: 46px;
+}
+.mprof-cnt3{
+    position: relative;
+    top: 30px;
+    color: #000;
+    width: 300px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    left: 46px;
 }
 
 .oursolution {
@@ -221,7 +258,7 @@ left: 46px;
 .howtouse{
     position: absolute;
     top: 2000px;
-    left: 575px;
+    left: 750px;
     color: #000;
     text-align: center;
     font-family: Montserrat;

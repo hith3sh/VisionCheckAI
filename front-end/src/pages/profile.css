@@ -14,7 +14,7 @@
 
   .profile .div {
     background-color: #f2f3f4;
-    height: 1024px;
+    height: 900px;
     position: relative;
     width: 1440px;
     overflow: hidden;
@@ -43,7 +43,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 0px 13px 1px #00000040;
-    height: 407px;
+    height: 600px;
     left: 351px;
     position: absolute;
     top: 100px;
@@ -74,7 +74,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 228px;
+    top: 250px;
     white-space: nowrap;
   }
   /*contact no.*/
@@ -88,7 +88,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 310px;
+    top: 350px;
     white-space: nowrap;
   }
   
@@ -96,7 +96,7 @@
     height: 24px;
     left: 43px;
     position: absolute;
-    top: 146px;
+    top: 160px;
     width: 114px;
   }
   /*firstname*/
@@ -105,7 +105,7 @@
     font-family: "Montserrat-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
-    height: 24px;
+    height: 30px;
     left: 0;
     letter-spacing: 0;
     line-height: normal;
@@ -124,7 +124,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 57px;
+    top: 60px;
     white-space: nowrap;
   }
   /*title*/
@@ -133,11 +133,11 @@
     border-radius: 10px;
     border-color: #d9d9d93b;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 40px;
     padding-left: 20px;
     position: absolute;
-    top: 77px;
+    top: 85px;
     width: 295px;
   }
   /*country code*/
@@ -151,7 +151,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 141px;
+    top: 55px;
     white-space: nowrap;
   }
   /*country code*/
@@ -161,11 +161,11 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 452px;
     position: absolute;
-    top: 171px;
-    width: 202px;
+    top: 80px;
+    width: 250px;
   }
   /*address line1*/
   .profile .text-wrapper-8 {
@@ -178,7 +178,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 228px;
+    top: 160px;
     white-space: nowrap;
   }
   /*email address*/
@@ -188,13 +188,15 @@
     font-size: 16px;
     font-weight: 600;
     height: 24px;
-    left: 459px;
+    left: 40px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 57px;
+    top: 450px;
     white-space: nowrap;
   }
+ 
+
   /*email address*/
   .profile .input-8 {
     background-color: #d9d9d93b;
@@ -202,12 +204,14 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
-    left: 452px;
+    height: 50px;
+    left: 40px;
     position: absolute;
-    top: 77px;
-    width: 515px;
+    top: 480px;
+    width: 295px;
   }
+
+  
   /*personal information text*/
   .profile .text-wrapper-10 {
     -webkit-background-clip: text !important;
@@ -223,7 +227,7 @@
     background-clip: text;
     color: transparent;
     font-family: "Montserrat-ExtraBold", Helvetica;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 800;
     height: 29px;
     left: 35px;
@@ -243,7 +247,7 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 709px;
     position: absolute;
     top: 174px;
@@ -256,10 +260,10 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 449px;
     position: absolute;
-    top: 252px;
+    top: 190px;
     width: 518px;
   }
   /*address line 2*/
@@ -283,10 +287,10 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 40px;
     position: absolute;
-    top: 174px;
+    top: 185px;
     width: 295px;
   }
   /*contact number*/
@@ -296,10 +300,10 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 40px;
     position: absolute;
-    top: 338px;
+    top: 380px;
     width: 295px;
   }
   /*Last name*/
@@ -309,32 +313,19 @@
     padding-left: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
+    height: 50px;
     left: 43px;
     position: absolute;
-    top: 257px;
+    top: 280px;
     width: 295px;
   }
-  
-  /*address line 2*/
-  .profile .input-9 {
-    background-color: #d9d9d93b;
-    border-color: #d9d9d93b;
-    padding-left: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 40px;
-    left: 452px;
-    position: absolute;
-    top: 338px;
-    width: 518px;
-  }
+
   /*verticle rectangle*/
   .profile .overlap-2 {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 0px 13px 1px #00000040;
-    height: 407px;
+    height: 600px;
     left: 50px;
     position: absolute;
     top: 100px;
@@ -377,19 +368,7 @@
     width: 200px;
     border-radius: 50px;
   }
-  
-  /*working ex. */
-  .profile .overlap-3 {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 13px 1px #00000040;
-    height: 303px;
-    left: 49px;
-    position: absolute;
-    top: 516px;
-    width: 1363px;
-  }
-  /*experience*/
+
   .profile .text-wrapper-14 {
     color: #ada8a8;
     font-family: "Montserrat-SemiBold", Helvetica;
@@ -532,28 +511,33 @@
   
   .profile .overlap-4 {
     height: 65px;
-    left: 1200px;
+    left: 50px;
     position: absolute;
-    top: 825px;
+    top: 720px;
     width: 137px;
   }
-  /* }input[type="submit"] {
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 20px;
-    font-family: "Montserrat-ExtraBold", Helvetica;
-    font-size: 20px;
-    font-weight: 700;
-    left: 35px;
-    letter-spacing: 0.2px;
-    line-height: 30px;
-    position: absolute;
-    white-space: nowrap;
-    background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
-    border: 1px linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
-    color: #fff;
-    padding: 10px 20px;
-  } */
-  /* input[type="submit"]:hover {
-    background:linear-gradient(180deg, rgb(58, 142, 246) 0%, rgb(110.75, 57.8, 249.75) 100%);
-  } */
+  .submit-button {
+    background: linear-gradient(
+      180deg,
+      rgb(58, 142, 246) 0%,
+      rgb(83.09, 101.95, 247.79) 47.56%,
+      rgb(86.77, 96.08, 248.05) 54.54%,
+      rgb(90.47, 90.18, 248.31) 61.54%,
+      rgb(110.75, 57.8, 249.75) 100%
+    );
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px; 
+    margin: 4px 2px;
+    cursor: pointer; 
+    border-radius: 12px;
+    transition: background-color 0.3s ease; 
+}
+
+.submit-button:hover {
+  background-color: #5a39ed !important; /* Darker green on hover */
+}

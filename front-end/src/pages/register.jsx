@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import './register.css';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, collection, addDoc } from 'firebase/firestore';
 import { firebaseApp } from '../firebase';
 import ErrorPopup from './errorPopup';
-/*import { IconArrowDown } from "./IconArrowDown";
-import { IconArrowDownWrapper } from "./IconArrowDownWrapper";*/
+
 
 function Register() {
   const navigate = useNavigate();
@@ -22,7 +21,8 @@ function Register() {
     contactno: '',
     medicals: '',
     title: '',
-    confirm: ''
+    confirm: '',
+    termsAccepted: false // Add state for terms acceptance
   });
 
   // Error handling state
@@ -66,10 +66,10 @@ function Register() {
 
   // Handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
@@ -82,7 +82,8 @@ function Register() {
       validateContact() && 
       validateEmail() && 
       validatePasswordMatch() && 
-      validatePassword();
+      validatePassword() &&
+      formData.termsAccepted; // Ensure terms are accepted
 
     if (!isValid) {
       setShowError(true);
@@ -104,15 +105,19 @@ function Register() {
         lastname: formData.lastname,
         contactno: formData.contactno,
         medicals: formData.medicals,
+        // country:, 
+        // AddressLine1:
+        // AddressLine2:
         title: formData.title,
         createdAt: new Date(),
         userId: userCredential.user.uid
       };
 
-      // Save user data to Firestore
+      // Save user data to Firestore database
       try {
         const userRef = collection(fire_db, 'users');
-        await addDoc(userRef, userData);
+        await setDoc(doc(fire_db, 'users', userCredential.user.uid), userData);
+        // await addDoc(userRef, userData);
         navigate('/login', { replace: true });
       } catch (firestoreError) {
         console.error('Firestore Error:', firestoreError);
@@ -130,8 +135,11 @@ function Register() {
   return (
     <div className="registeration">
       <div className="form">
+        
         <div className="overlap-group">
           <div className="rectangle-1" />
+          
+          <div className='register-txt'><h1>REGISTRATION</h1></div>
           
           {/* Title Selection */}
           <select 
@@ -227,11 +235,24 @@ function Register() {
             required
           />
 
+          {/* Terms of User Agreement */}
+          <div className="terms-container">
+            <input
+              type="checkbox"
+              name="termsAccepted"
+              checked={formData.termsAccepted}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="termsAccepted" className='terms-label'>
+              I agree to the terms of user agreement
+            </label>
+          </div>
           {/* Submit Button */}
           <input
             type="submit"
             className="btn-Reg"
-            value="Register"
+            value="Submit"
             onClick={handleRegister}
           />
         </div>
@@ -247,6 +268,7 @@ function Register() {
             currentError === 'password-length' ? 'Password must be at least 6 characters long' :
             currentError === 'firestore' ? 'Failed to save user data. Please try again.' :
             currentError === 'auth' ? 'Registration failed. This email might already be in use.' :
+            !formData.termsAccepted ? 'You must agree to the terms of user agreement' :
             'An error occurred during registration.'
           }
           onClose={() => setShowError(false)}

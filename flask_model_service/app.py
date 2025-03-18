@@ -67,11 +67,11 @@ def preprocess_image(image_bytes):
 def glaucoma_state(prediction):
     predicted_class = int(np.argmax(prediction[0]))
     if predicted_class == 0:
-        glaucoma_stage = 'advanced glaucoma'
+        glaucoma_stage = 'normal control'
     elif predicted_class == 1:
         glaucoma_stage = 'early glaucoma'
     else:
-        glaucoma_stage = 'normal control'
+        glaucoma_stage = 'advanced glaucoma'
     return glaucoma_stage
 
 @app.route('/predict', methods=['POST'])
