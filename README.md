@@ -1,43 +1,5 @@
 # Glaucoma Detection Web Application
 
-A comprehensive web application for detecting glaucoma using deep learning and explainable AI techniques. The system analyzes retinal fundus images and tabular data about a patient and provides detailed insights with GradCAM and SHAP visualizations.
-
-![Fusion of Data](mulitmodel.png)
-
-## Features
-
-- Dual eye analysis (left and right)
-- Real-time image processing
-- Explainable AI visualizations (GradCAM and SHAP)
-- Detailed risk assessment and recommendations
-- Patient history tracking
-- Responsive design for all devices
-- Secure user authentication
-
-## Tech Stack
-
-### Frontend
-- React.js
-- Material-UI
-- React Router
-- React Toastify
-- React Spinners
-
-### Backend
-- Java Spring Boot (Main API)
-- Flask (ML Service)
-- TensorFlow/Keras (Deep Learning)
-- SHAP (Explainable AI)
-
-## Installation
-
-### Prerequisites
-- Node.js (v14 or higher)
-- Java JDK 11
-- Python 3.8+
-- Maven
-- MySQL
-
 ### Frontend Setup
 bash
 ``cd fyp/front-end``
@@ -46,9 +8,9 @@ bash
 
 ### Java Backend Setup
 bash
-``cd fyp/java_backend``
-``mvn clean install``
-``java -jar target/glaucoma-app.jar``
+1. ``cd java_backend``
+2. ``mvn clean install``
+3. ``mvn spring-boot:run``
 
 ### ML Service Setup
 bash
@@ -56,36 +18,7 @@ bash
 ``pip install -r requirements.txt``
 ``python app.py``
 
-
-## Usage
-
-1. Register/Login to the system
-2. Navigate to "Glaucoma Detection" from dashboard
-3. Upload retinal fundus images for both eyes
-4. Fill in patient information
-5. Click "Analyze" to process images
-6. View results with:
-   - Diagnosis for each eye
-   - Risk assessment
-   - Recommendations
-   - Explainable AI visualizations
-
-## API Endpoints
-
-### Main API (Java - Port 8080)
-- POST `/api/v1/submit` - Submit images and patient data
-- GET `/api/v1/history` - Get patient history
-
-### ML Service (Flask - Port 5000)
-- POST `/predict` - Get glaucoma predictions
-- POST `/gradcam` - Generate GradCAM visualizations
-- POST `/shap` - Generate SHAP values
-
 ## Development
-
-### Environment Variables
-Create `.env` files in respective directories:
-
 
 ## Firebase Authentication Setup
 
@@ -98,18 +31,39 @@ Create `.env` files in respective directories:
 2. Register app with a nickname
 3. Copy the Firebase configuration:
 
+### 6. Initialize Firebase
+Create `front-end/src/firebase.jsx`:
+```javascript
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from 'firebase/firestore';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-Add to src/firebase/config.js:
-````const firebaseConfig = {
-apiKey: "your-api-key",
-authDomain: "your-app.firebaseapp.com",
-projectId: "your-project-id",
-storageBucket: "your-app.appspot.com",
-messagingSenderId: "your-sender-id",
-appId: "your-app-id",
-measurementId: "your-measurement-id"
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
 };
-````
+ 
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+
+const analytics = getAnalytics(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+export { firebaseApp, db, analytics };
+```
+
 
 ### 3. Enable Authentication Methods
 1. Go to Authentication > Sign-in method
@@ -127,80 +81,24 @@ measurementId: "your-measurement-id"
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    
+    // Allow read/write only for authenticated users
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
-    match /reports/{reportId} {
-      allow read, write: if request.auth != null;
+
+     match /{userId}/{documentId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
     }
   }
 }
+
 ```
 
-### 5. Install Firebase in Your React App
-```bash
-npm install firebase
-npm install react-firebase-hooks
-```
-
-### 6. Initialize Firebase
-Create `src/firebase/firebase.js`:
-```javascript
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-
-const firebaseConfig = {
-  // Your config from step 2
-};
-
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-```
-
-### 7. Firestore Collections Structure
-```javascript
-users/
-  {userId}/
-    email: string
-    name: string
-    createdAt: timestamp
-    role: string
-
-reports/
-  {reportId}/
-    userId: string
-    leftEyeDiagnosis: string
-    rightEyeDiagnosis: string
-    timestamp: timestamp
-    gradcamResults: {
-      leftEye: string
-      rightEye: string
-    }
-    shapResults: {
-      leftEye: string
-      rightEye: string
-    }
-```
-
-### 8. Environment Variables
-Add to your `.env` file:
-```
-REACT_APP_FIREBASE_API_KEY=your-api-key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your-app.firebaseapp.com
-REACT_APP_FIREBASE_PROJECT_ID=your-project-id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your-app.appspot.com
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
-REACT_APP_FIREBASE_APP_ID=your-app-id
-REACT_APP_FIREBASE_MEASUREMENT_ID=your-measurement-id
-```
-
-### 9. Deploy Firebase Rules
-```bash
-npm install -g firebase-tools
-firebase login
-firebase init
-firebase deploy --only firestore:rules
-```
+### 7. Initialize firebase for python flask
+1. go to firebase -> project settings -> service accounts
+2. Select python 
+3. select genarate new private key
+4. Download that json file and place it inside flask_model_service/
+5. make a copy of it and place it inside java_backend/src/main/resources/
 
