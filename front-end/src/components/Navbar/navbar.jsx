@@ -22,13 +22,17 @@ export const Navbar = () => {
           <li className={activeItem === "home" ? "home active" : "home"}  onClick={() => handleItemClick("home")}><Link  to='/'>Home</Link></li>
           <li className={activeItem === "aboutus" ? "aboutus active" : "aboutus"}onClick={() => handleItemClick("aboutus")}><Link  to='/aboutus'>About Us</Link></li>
           <li className={activeItem === "contactus" ? "contactus active" : "contactus"}onClick={() => handleItemClick("contactus")}><Link  to='/contactus'>Contact Us</Link></li>
-            
         </ul>
       </div>
-      <Link  to='/login' >
-    <Button className='login'>Login</Button>
-  </Link>
-      <Link  to='/register'><Button className='register'>Register</Button></Link>
+      <div className='auth-buttons'>
+        <Link  to='/login' >
+          <Button className='login'>Login</Button>
+        </Link>
+
+        <Link  to='/register'>
+          <Button className='register'>Register</Button>
+        </Link>
+      </div>
      </div>
     </>
   )

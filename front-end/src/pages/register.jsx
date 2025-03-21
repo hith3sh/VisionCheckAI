@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import './register.css';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { getFirestore, doc, setDoc, collection, addDoc } from 'firebase/firestore';
-import { firebaseApp } from '../firebase';
-import ErrorPopup from './errorPopup';
-
+import { getFirestore, doc, setDoc, collection } from 'firebase/firestore';
+import { db, firebaseApp } from '../firebase'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   const navigate = useNavigate();
   const auth = getAuth(firebaseApp);
-  const fire_db = getFirestore(firebaseApp);
-
-  // Form state management
+  const fire_db = db;
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -22,18 +21,14 @@ function Register() {
     medicals: '',
     title: '',
     confirm: '',
-    termsAccepted: false // Add state for terms acceptance
+    termsAccepted: false 
   });
-
-  // Error handling state
-  const [currentError, setCurrentError] = useState('');
-  const [showError, setShowError] = useState(false);
 
   // Form validation functions
   const validateContact = () => {
     const regex = /^\d{10}$/;
     if (!regex.test(formData.contactno)) {
-      setCurrentError('contact no');
+      toast.error('Please enter a valid contact number');
       return false;
     }
     return true;
@@ -42,7 +37,7 @@ function Register() {
   const validateEmail = () => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!emailRegex.test(formData.email)) {
-      setCurrentError('email');
+      toast.error('Please enter a valid email address');
       return false;
     }
     return true;
@@ -50,7 +45,7 @@ function Register() {
 
   const validatePasswordMatch = () => {
     if (formData.password !== formData.confirm) {
-      setCurrentError('password');
+      toast.error('Password confirmation does not match');
       return false;
     }
     return true;
@@ -58,7 +53,7 @@ function Register() {
 
   const validatePassword = () => {
     if (formData.password.length < 6) {
-      setCurrentError('password-length');
+        ('Password must be at least 6 characters long');
       return false;
     }
     return true;
@@ -77,16 +72,18 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validate all fields
     const isValid = 
       validateContact() && 
       validateEmail() && 
       validatePasswordMatch() && 
-      validatePassword() &&
-      formData.termsAccepted; // Ensure terms are accepted
+      validatePassword()
 
     if (!isValid) {
-      setShowError(true);
+      // The individual validation functions already show error toasts.
+      return;
+    }
+    if (!formData.termsAccepted) {
+      toast.error('Please accept the terms of user agreement');
       return;
     }
 
@@ -105,40 +102,35 @@ function Register() {
         lastname: formData.lastname,
         contactno: formData.contactno,
         medicals: formData.medicals,
-        // country:, 
-        // AddressLine1:
-        // AddressLine2:
         title: formData.title,
         createdAt: new Date(),
         userId: userCredential.user.uid
       };
 
-      // Save user data to Firestore database
+      // Save user data to Firestore
       try {
-        const userRef = collection(fire_db, 'users');
         await setDoc(doc(fire_db, 'users', userCredential.user.uid), userData);
-        // await addDoc(userRef, userData);
-        navigate('/login', { replace: true });
+        toast.success('Registration successful! Redirecting to login...');
+        setTimeout(() => {
+          navigate('/login', { replace: true });
+        }, 2000);
       } catch (firestoreError) {
         console.error('Firestore Error:', firestoreError);
+        // Clean up the authentication user if Firestore fails
         await userCredential.user.delete();
-        setCurrentError('firestore');
-        setShowError(true);
+        toast.error('Failed to save user data. Please try again.');
       }
     } catch (error) {
       console.error('Registration Error:', error);
-      setCurrentError('auth');
-      setShowError(true);
+      toast.error('Registration failed. This email might already be in use.');
     }
   };
 
   return (
     <div className="registeration">
       <div className="form">
-        
         <div className="overlap-group">
           <div className="rectangle-1" />
-          
           <div className='register-txt'><h1>REGISTRATION</h1></div>
           
           {/* Title Selection */}
@@ -183,13 +175,12 @@ function Register() {
             onChange={handleChange}
           >
             <option value="" disabled>Medical specializations</option>
-            <option value="Pathologist">Pathologist</option>
-            <option value="Radiologist">Radiologist</option>
-            <option value="Medical Oncologist">Medical Oncologist</option>
-            <option value="Surgical Oncologist">Surgical Oncologist</option>
-            <option value="Hematologist">Hematologist</option>
-            <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
-            <option value="Laboratory Technician">Laboratory Technician</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Optometrist">Optometrist</option>
+            <option value="Ocular Surgeon">Ocular Surgeon</option>
+            <option value="Vision Scientist">Vision Scientist</option>
+            <option value="Orthoptist">Orthoptist</option>
+            <option value="Low Vision Therapist">Low Vision Therapist</option>
           </select>
 
           {/* Contact Information */}
@@ -216,7 +207,7 @@ function Register() {
             required
           />
           <input
-            className={`input-9 ${currentError === 'password' ? 'error' : ''}`}
+            className="input-9"
             type="password"
             name="password"
             placeholder="Password"
@@ -225,7 +216,7 @@ function Register() {
             required
           />
           <input
-            className={`input-10 ${currentError === 'password' ? 'error' : ''}`}
+            className="input-10"
             type="password"
             name="confirm"
             placeholder="Confirm Password"
@@ -248,6 +239,7 @@ function Register() {
               I agree to the terms of user agreement
             </label>
           </div>
+          
           {/* Submit Button */}
           <input
             type="submit"
@@ -257,23 +249,7 @@ function Register() {
           />
         </div>
       </div>
-
-      {/* Error Popup */}
-      {showError && (
-        <ErrorPopup
-          message={
-            currentError === 'email' ? 'Please Enter a valid email address' :
-            currentError === 'contact no' ? 'Please Enter a valid contact number' :
-            currentError === 'password' ? 'Password confirmation does not match' :
-            currentError === 'password-length' ? 'Password must be at least 6 characters long' :
-            currentError === 'firestore' ? 'Failed to save user data. Please try again.' :
-            currentError === 'auth' ? 'Registration failed. This email might already be in use.' :
-            !formData.termsAccepted ? 'You must agree to the terms of user agreement' :
-            'An error occurred during registration.'
-          }
-          onClose={() => setShowError(false)}
-        />
-      )}
+      <ToastContainer />
     </div>
   );
 }

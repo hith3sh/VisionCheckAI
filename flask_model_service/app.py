@@ -13,6 +13,17 @@ import shap
 from get_shap import generate_shap
 from get_gradcam import generate_gradcam
 from get_shap import fusion_model
+import jwt 
+import firebase_admin
+from firebase_admin import credentials, auth
+
+# Load Firebase service account credentials
+cred = credentials.Certificate("glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json")
+firebase_admin.initialize_app(cred)
+
+
+
+
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -64,6 +75,15 @@ def preprocess_image(image_bytes):
     image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
     return image_array
 
+def get_uid_from_token(id_token):
+    """Verifies Firebase ID token and extracts user UID"""
+    try:
+        decoded_token = auth.verify_id_token(id_token)
+        return decoded_token.get("uid")
+    except Exception as e:
+        print("Token verification failed:", e)
+        return None
+    
 def glaucoma_state(prediction):
     predicted_class = int(np.argmax(prediction[0]))
     if predicted_class == 0:
@@ -77,7 +97,17 @@ def glaucoma_state(prediction):
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        print('request form :', request.form)
+        auth_header = request.headers.get("Authorization")
+
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return jsonify({"error": "Unauthorized"}), 401
+
+        id_token = auth_header.split("Bearer ")[1]
+
+        uid = get_uid_from_token(id_token)
+        if not uid:
+            return jsonify({"error": "User ID not found in token"}), 400
+
         left_image = request.files.get("leftImage")
         right_image = request.files.get("rightImage")
 
@@ -192,12 +222,12 @@ def predict():
 
         # Explainable AI
         # SHAP
-        left_shap_path = generate_shap(left_eye_image, left_tabular_array)
-        right_shap_path = generate_shap(right_eye_image, right_tabular_array)
+        left_shap_path = generate_shap(left_eye_image, left_tabular_array, uid)
+        right_shap_path = generate_shap(right_eye_image, right_tabular_array, uid)
  
         # GradCAM
-        left_gradcam_path = generate_gradcam(original_left_image, left_eye_image, left_tabular_array)
-        right_gradcam_path = generate_gradcam(original_right_image, right_eye_image, right_tabular_array)
+        left_gradcam_path = generate_gradcam(original_left_image, left_eye_image, left_tabular_array, uid)
+        right_gradcam_path = generate_gradcam(original_right_image, right_eye_image, right_tabular_array, uid)
         
         return jsonify({
             "glaucoma_state_right_eye": right_glaucoma_stage,

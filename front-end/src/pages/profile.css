@@ -1,24 +1,25 @@
 .profile {
-    background-color: #f2f3f4;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-  }
-  ::placeholder{
-    color: #ADA9A9;
-    font-weight: 400;
-  
-  }
+  background-color: #f2f3f4;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+}
 
-  .profile .div {
-    background-color: #f2f3f4;
-    height: 900px;
-    position: relative;
-    width: 1440px;
-    overflow: hidden;
-  }
+::placeholder {
+  color: #ADA9A9;
+  font-weight: 400;
+}
+
+.profile .whole-form {
+  background-color: #f2f3f4;
+  height: 800px;
+  position: relative;
+  width: 1500px;
+  overflow: hidden;
+  margin-left: 200px;
+}
   /*my profile*/
   .profile .text-wrapper {
     -webkit-background-clip: text !important;
@@ -178,7 +179,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 160px;
+    top: 60px;
     white-space: nowrap;
   }
   /*email address*/
@@ -263,7 +264,7 @@
     height: 50px;
     left: 449px;
     position: absolute;
-    top: 190px;
+    top: 85px;
     width: 518px;
   }
   /*address line 2*/
@@ -334,7 +335,7 @@
   
   /*name2*/
   .profile .text-wrapper-13 {
-    color: #000000;
+    color: #636363;
     font-family: "Montserrat-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
@@ -511,7 +512,7 @@
   
   .profile .overlap-4 {
     height: 65px;
-    left: 50px;
+    left: 170px;
     position: absolute;
     top: 720px;
     width: 137px;
@@ -539,5 +540,40 @@
 }
 
 .submit-button:hover {
-  background-color: #5a39ed !important; /* Darker green on hover */
+  background-color: #5a39ed !important;
+  transform: scale(1.05);
+}
+
+.profile .overlap-5 {
+  height: 65px;
+  left: 50px;
+  position: absolute;
+  top: 720px;
+  width: 137px;
+}
+
+.back-btn {
+  background: linear-gradient(
+    180deg,
+    rgb(58, 142, 246) 0%,
+    rgb(83.09, 101.95, 247.79) 47.56%,
+    rgb(86.77, 96.08, 248.05) 54.54%,
+    rgb(90.47, 90.18, 248.31) 61.54%,
+    rgb(110.75, 57.8, 249.75) 100%
+  );
+  border: none; 
+  color: white; 
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px; 
+  margin: 4px 2px;
+  cursor: pointer; 
+  border-radius: 12px;
+  transition: background-color 0.3s ease; 
+}
+.back-btn:hover {
+  background-color: #5a39ed !important;
+  transform: scale(1.05);
 }

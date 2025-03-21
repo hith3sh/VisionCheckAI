@@ -5,20 +5,24 @@ import matplotlib.pyplot as plt
 import os
 import uuid
 from model_loader import get_model
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
-GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/gradcam_assets') 
+GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/gradcam_assets/') 
 os.makedirs(GRADCAM_ASSETS_DIR, exist_ok=True)
 
 model = get_model()
 
-def generate_gradcam(original_image, image, tabular_data, layer_name='conv2d_4'):
+def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2d_4'):
     try:
         # Generate a random filename using UUID
-        filename = f'gradcam_{uuid.uuid4()}.png'
-        output_path = os.path.join(GRADCAM_ASSETS_DIR, filename)
-        
+        time_now = datetime.now()
+        filename =f'{time_now}.png'
+        folder_path = GRADCAM_ASSETS_DIR + uid
+        os.makedirs(folder_path, exist_ok=True)
+        output_path = os.path.join(folder_path, filename)
+        uidpath = uid + '/' + filename
         # Create GradCAM model
         grad_model = tf.keras.models.Model(
             [model.inputs],
@@ -50,7 +54,7 @@ def generate_gradcam(original_image, image, tabular_data, layer_name='conv2d_4')
 
         # Superimpose heatmap on original image
         try:
-            superimposed = cv2.addWeighted(original_image_resized, 0.6, heatmap, 0.4, 0)
+            superimposed = cv2.addWeighted(original_image_resized, 0.5, heatmap, 0.5, 0)
         except Exception as e:
             raise e
         
@@ -63,7 +67,7 @@ def generate_gradcam(original_image, image, tabular_data, layer_name='conv2d_4')
             print(f"Error saving file: {str(e)}")
             raise e
         print(f"GRAD-CAM img saved to: {output_path}")
-        return filename
+        return uidpath
 
     except Exception as e:
         print(f"Error in generate_gradcam: {str(e)}")

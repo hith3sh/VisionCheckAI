@@ -272,3 +272,24 @@
     color: #333;
     margin-top: 1rem;
 }
+
+.bck-btn {
+    display: block; /* Ensures it takes its own line */
+    padding: 15px 20px; /* Adds some padding for size */
+    background-color: #007bff; /* Matches the blue from .htable button */
+    color: #ffffff; /* White text for contrast */
+    border: none;
+    border-radius: 5px; /* Slight rounding */
+    font-family: Montserrat;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    top: 83px;
+    left: 300px;
+    width: 130px; /* Optional: Set a fixed width */
+  }
+  
+  .bck-btn {
+    background: linear-gradient(96deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+  }

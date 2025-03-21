@@ -286,7 +286,9 @@ export const UploadRetinal = () => {
                                 </div>
                             </div>
                         </div>
-
+                        <button className="bck-btn" onClick={() => navigate('/dashboard')}>
+                            Back
+                        </button>
                         <Button 
                             className="analyze-button"
                             onClick={handleSubmit}

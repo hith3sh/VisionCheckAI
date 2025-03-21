@@ -22,6 +22,7 @@ public class UserFormDataController {
 
     @PostMapping("/submit")
     public ResponseEntity<String> handleFormData(
+        @RequestHeader(value = "Authorization", required = false) String authorizationHeader,
         @RequestParam(value = "leftImage", required = false) MultipartFile leftImage,
         @RequestParam(value = "rightImage", required = false) MultipartFile rightImage,
         @RequestParam("data") String data) {
@@ -50,6 +51,11 @@ public class UserFormDataController {
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            
+            // Forward Authorization header if present
+            if (authorizationHeader != null && !authorizationHeader.isEmpty()) {
+                headers.set("Authorization", authorizationHeader);
+            }
 
             MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
             body.add("data", data);

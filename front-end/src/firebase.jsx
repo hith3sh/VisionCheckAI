@@ -21,7 +21,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
-const db = getFirestore(app);
 
-export { db };
+const analytics = getAnalytics(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+export { firebaseApp, db, analytics };

@@ -30,7 +30,6 @@ export const  Landingpage = () => {
       </Link>
     </div>
 
-    {/* <Link to='/login'><Button className='scannow'>Scan Now</Button></Link> */}
 
     <Element name="whoWeServe"> <section id='whoWeServe'> <p className='whoweserve'></p>
     <div className='whoweservebox'>

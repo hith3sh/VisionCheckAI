@@ -10,7 +10,6 @@ import Login from './pages/login';
 import { UploadRetinal } from './pages/uploadretinal';
 import Register from './pages/register';
 import {Dashboard} from './pages/dashboard';
-import Forum from './pages/forum';
 import Results from './pages/results';
 import History from './pages/history';
 import Profile from './pages/profile';
@@ -40,6 +39,7 @@ function App() {
         <Route index element={<Landingpage />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/contactus" element={<ContactUs />} />
+        
       </Route>
 
       {/* Routes without Navbar */}
@@ -48,7 +48,6 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/*" element={<NoPage />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/forum" element={<Forum />} />
       <Route path="/results" element={<Results />} />
       <Route path="/history" element={<History />} />
       <Route path="/profile" element={<Profile />} />

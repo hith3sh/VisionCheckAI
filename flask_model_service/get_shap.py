@@ -12,32 +12,39 @@ from model_loader import get_model
 import keras
 from tensorflow.keras.layers import Layer
 import bz2
+from datetime import datetime
+import joblib
 
 fusion_model = get_model()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
-SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets')
+SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets/')
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
-
+MINMAXSCALAR = os.path.join(BASE_DIR, '../weights/minmax_scaler.pkl')
 PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl.bz2')
 
 tabular_features = ["Age", "Gender", "dioptre_1", "dioptre_2","astigmatism","Phakic_Pseudophakic","Pneumatic","Pachymetry","Axial_Length"]
 
+scaler = joblib.load(MINMAXSCALAR)
 
 with bz2.BZ2File(PICKLE_PATH, 'rb') as f:
     explainer = pickle.load(f)
 
-# with open(PICKLE_PATH, 'rb') as f:
-#     explainer = pickle.load(f)
 
-def generate_shap(image, tabular_data):
+def generate_shap(image, tabular_data, uid):
     try:
-        filename = f'shap_plot_{uuid.uuid4()}.png'
-        filepath = os.path.join(SHAP_ASSETS_DIR, filename)
-        
+        folder_path = SHAP_ASSETS_DIR + uid
+        os.makedirs(folder_path, exist_ok=True)
+        time_now = datetime.now()
+        filename =f'{time_now}.png'
+        filepath = os.path.join(folder_path, filename)
+        uidpath = uid + '/' + filename
         # Generate SHAP values from explainer
-        shap_values = explainer.shap_values([image, tabular_data])
+        tabular_data_normalized = scaler.transform(tabular_data)
+        print('tabular' ,tabular_data_normalized)
+
+        shap_values = explainer.shap_values([image, tabular_data_normalized])
         shap_values_reshaped = shap_values[1][:, :, 1] 
 
         # Create and save the plot without displaying
@@ -61,7 +68,7 @@ def generate_shap(image, tabular_data):
         
         print(f"SHAP plot saved to: {filepath}")
         
-        return filename
+        return uidpath
 
     except Exception as e:
         print(f"Error generating SHAP plot: {str(e)}")

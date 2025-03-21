@@ -59,15 +59,23 @@ function Login() {
       const user = userCredential.user;
       console.log('User logged in:', user);
 
-      //get the JWT token
       const token = await user.getIdToken();
+      const response = await fetch("http://localhost:8080/api/verify-token", {
       // Verify the token with the backend
-      const response = await apiCall('verify-token', {
-        method: 'POST',
-        body: JSON.stringify({ token })
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({})
       });
-      localStorage.setItem('token', token);
-      console.log('token saved on local storage');
+      console.log(response)
+      if (!response.ok) {
+        throw new Error("Token verification failed");
+      }
+
+      sessionStorage.setItem("token", token);
+      console.log("Token saved in sessionStorage");
       navigate('/dashboard', { replace: true });
 
     } catch (error) {
@@ -77,9 +85,11 @@ function Login() {
       } else if (error.code === 'auth/user-not-found') {
         toast.error('No account found with this email.');
       }else if (error.code === 'auth/invalid-email'){
-        toast.error(' Invalid email. Please try again.');
+        toast.error('Invalid email. Please try again.');
+      }else if (error.code === 'auth/invalid-credential'){
+        toast.error('Unsupported credential format. Please try again.');
       }else if (error.code === 'auth/invalid-login-credentials'){
-          toast.error('Invalid login credentials. Please try again.');
+          toast.error('Email/password combo does not match. Please try again.');
       } else {
         toast.error('Login failed due to a server error. Please try again later.');
       }
@@ -101,7 +111,7 @@ function Login() {
               <i className="fas fa-user"></i>
             </div>
             <div className="overlap">
-              <h5>Username</h5>
+              <h5>Email</h5>
               <input
                     type="text"
                     className="input"
