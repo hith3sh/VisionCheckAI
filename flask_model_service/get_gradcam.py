@@ -40,10 +40,12 @@ def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2
         conv_outputs = conv_outputs[0]
         
         # Generate heatmap
-        heatmap = tf.reduce_mean(tf.multiply(pooled_grads, conv_outputs), axis=-1)
-        heatmap = tf.maximum(heatmap, 0) / tf.math.reduce_max(heatmap)
+        heatmap = tf.reduce_sum(tf.multiply(pooled_grads, conv_outputs), axis=-1)
+        heatmap = tf.maximum(heatmap, 0)
+        max_val = tf.math.reduce_max(heatmap)
+        heatmap = heatmap / (max_val + 1e-10)
         heatmap = heatmap.numpy()
-        
+        print('heatmap', heatmap)        
         
         # Resize heatmap to match original image size
         heatmap = cv2.resize(heatmap, (224, 224))
@@ -72,35 +74,3 @@ def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2
     except Exception as e:
         print(f"Error in generate_gradcam: {str(e)}")
         raise e
-
-# def preprocess_image(image_bytes):
-#     image = cv2.imread(image_bytes)
-#     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert to RGB
-#     ## crop the image
-#     crop_box = (600, 300, 1600, 1200)
-#     height , width = image.shape[:2]
-#     if height == 1934 and width == 2576:
-#         print('cropping the image')
-#         x, y, w, h = crop_box
-#         cropped_image = image[y:y+h, x:x+w]
-
-#         # Normalize intensity to range [0, 255]
-#         normalized_image = cv2.normalize(cropped_image, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
-#         # Convert to LAB color space
-#         lab_image = cv2.cvtColor(normalized_image, cv2.COLOR_BGR2LAB)
-#         # Apply CLAHE to the L channel
-#         l, a, b = cv2.split(lab_image)
-#         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-#         l = clahe.apply(l)
-#         # Merge the channels back
-#         enhanced_image = cv2.merge((l, a, b))
-#         # Convert back to BGR color space
-#         enhanced_image = cv2.cvtColor(enhanced_image, cv2.COLOR_LAB2BGR)
-#         image = enhanced_image
-    
-#     # Resize the image to match model input size
-#     image = cv2.resize(image, (224, 224))
-#     # Normalize to [0, 1] for model input
-#     image_array = image / 255.0
-#     image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
-#     return image_array
