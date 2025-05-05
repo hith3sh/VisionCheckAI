@@ -1,6 +1,6 @@
 import React from 'react'
 import './footer.css'
-import { Backhead, Gradient, Bottompath, WhiteLogo,Newlogo } from '../../assets/index';
+import { Backhead, Gradient, Bottompath, WhiteLogo,Newlogo } from '../../../public/assets/index';
 import { Link, animateScroll as scroll } from 'react-scroll';
 
 export const CustFooter = () => {

@@ -16,13 +16,11 @@ from get_shap import fusion_model
 import jwt 
 import firebase_admin
 from firebase_admin import credentials, auth
+import time
 
 # Load Firebase service account credentials
 cred = credentials.Certificate("glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json")
 firebase_admin.initialize_app(cred)
-
-
-
 
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
@@ -145,8 +143,6 @@ def predict():
         leftPneumatic = handle_empty(data_dict.get("leftPneumatic"), 0.163287)
         leftPachymetry = handle_empty(data_dict.get("leftPachymetry"), 0.969737)
         leftAxialLength = handle_empty(data_dict.get("leftAxialLength"), 0.096287)
-        leftVFMD = handle_empty(data_dict.get("leftVFMD"), -2.39)
-        leftEye = 1.0
 
         # Right eye measurements  
         rightDioptre1 = handle_empty(data_dict.get("rightDioptre1"), -0.071738)
@@ -156,8 +152,6 @@ def predict():
         rightPneumatic = handle_empty(data_dict.get("rightPneumatic"),  0.163287)
         rightPachymetry = handle_empty(data_dict.get("rightPachymetry"), 0.969737)
         rightAxialLength = handle_empty(data_dict.get("rightAxialLength"),  0.096287)
-        rightVFMD = handle_empty(data_dict.get("rightVFMD"), -2.39)
-        rightEye = 0.0
 
         if leftLens == 'no':
             leftLens = 0
@@ -204,14 +198,15 @@ def predict():
                              rightPachymetry,
                              rightAxialLength,
                              ]
-
         # tabualr data should be expanded dimensions before passing to shap and gradcam
         left_tabular_array = np.array([left_tabular_data_arr], dtype=np.float32) 
         right_tabular_array = np.array([right_tabular_data_arr], dtype=np.float32)
 
         # feed in to the fusion model  - left & right eye
-        left_prediction = fusion_model.predict([left_eye_image, left_tabular_array])
-        right_prediction = fusion_model.predict([right_eye_image, right_tabular_array])
+        left_prediction = fusion_model.predict({'image_input': left_eye_image, 'tabular_input': left_tabular_array})
+        right_prediction = fusion_model.predict({'image_input': right_eye_image, 'tabular_input': right_tabular_array})
+        # left_prediction = fusion_model.predict([left_eye_image, left_tabular_array])
+        # right_prediction = fusion_model.predict([right_eye_image, right_tabular_array])
         
         # get glaucoma stage 
         left_glaucoma_stage = glaucoma_state(left_prediction)
@@ -227,8 +222,12 @@ def predict():
  
         # GradCAM
         left_gradcam_path = generate_gradcam(original_left_image, left_eye_image, left_tabular_array, uid)
+        print('left gradcam path', left_gradcam_path)
+        time.sleep(3)
         right_gradcam_path = generate_gradcam(original_right_image, right_eye_image, right_tabular_array, uid)
+        print('right gradcam path', right_gradcam_path)
         
+        time.sleep(10)
         return jsonify({
             "glaucoma_state_right_eye": right_glaucoma_stage,
             "glaucoma_state_left_eye": left_glaucoma_stage,

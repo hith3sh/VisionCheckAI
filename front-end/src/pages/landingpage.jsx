@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './landingpage.css'; 
 import  CustButton  from '../components/custbutton/custbutton';
 import {Oursolutions} from '../components/landingpage/oursolutions';
-import { Backhead, Gradient, Bottompath } from '../assets/index';
+import { Backhead, Gradient, Bottompath } from '../../public/assets/index';
 import { Button } from '@mui/base/Button';
 import  {CustFooter}  from '../components/landingpage/footer';
 import {UploadRetinal} from './uploadretinal'

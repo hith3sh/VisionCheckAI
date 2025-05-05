@@ -1,6 +1,6 @@
 .registeration {
   /* background-image:url('https://affiliatedmedicalconsulting.files.wordpress.com/2021/05/affiliated-medical-consulting.jpg?w=1024'); */
-  background: url(src/assets/register.jpg);
+  background: url(/assets/register.jpg);
   background-size: cover;
   display: flex;
   flex-direction: row;

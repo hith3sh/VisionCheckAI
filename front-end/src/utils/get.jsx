@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 export const apiCall = async (endpoint, options = {}) => {
   const auth = getAuth();
   const user = auth.currentUser;
+  const backendUrl = import.meta.env.VITE_JAVA_BACKEND_URL;
   
   if (!user) {
     throw new Error('User not authenticated');
@@ -17,7 +18,7 @@ export const apiCall = async (endpoint, options = {}) => {
     ...options.headers
   };
 
-  const response = await fetch(`http://localhost:8080/api/${endpoint}`, {
+  const response = await fetch(`${backendUrl}/api/${endpoint}`, {
     ...options,
     headers
   });

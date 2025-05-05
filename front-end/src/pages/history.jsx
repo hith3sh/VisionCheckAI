@@ -3,7 +3,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import jsPDF from 'jspdf';
 import { useNavigate } from 'react-router-dom';
-import './History.css';
+import './history.css';
 
 const getValuesBasedOnGlaucomaState = (glaucomaState) => {
   let riskScore, explanation, recommendation;
@@ -309,7 +309,7 @@ return (
         </div>
       ) : reports.length === 0 ? (
         <div className="empty-state">
-        <img src="src/assets/no-reports.webp" alt="No Reports Available" className="empty-icon" />
+        <img src="/assets/no-reports.webp" alt="No Reports Available" className="empty-icon" />
         <h3>No reports found...</h3>
       </div>
       ) : (

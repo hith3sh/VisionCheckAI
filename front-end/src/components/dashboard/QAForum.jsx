@@ -1,6 +1,6 @@
 import React from 'react'
 import './QAForum.css';
-import {Rectangle1224 }from '../../assets/dashboard';
+import {Rectangle1224 }from '../../../assets/dashboard';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export const QAForum =() => {

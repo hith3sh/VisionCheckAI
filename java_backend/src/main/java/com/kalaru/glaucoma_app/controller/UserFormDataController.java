@@ -47,7 +47,9 @@ public class UserFormDataController {
 
             // Send data to Python backend
             RestTemplate restTemplate = new RestTemplate();
-            String pythonBackendUrl = "http://localhost:5000/predict";
+            String pythonBackendUrl = System.getenv("VITE_PYTHON_BACKEND_URL");
+
+            //String pythonBackendUrl = "http://flask_model_service:5000/predict";
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);

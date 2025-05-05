@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-  const [imageUrl, setImageUrl] = useState('src/assets/avatar.jpg');
+  const [imageUrl, setImageUrl] = useState('/assets/avatar.jpg');
   const [formData, setFormData] = useState({
     email: '',
     contactno: '',

@@ -9,17 +9,19 @@ from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
-GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/gradcam_assets/') 
+
+#GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/gradcam_assets/') 
+GRADCAM_ASSETS_DIR = os.path.join('/app/assets', 'gradcam_assets')
 os.makedirs(GRADCAM_ASSETS_DIR, exist_ok=True)
 
 model = get_model()
 
-def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2d_4'):
+def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2d_5'):
     try:
         # Generate a random filename using UUID
-        time_now = datetime.now()
+        time_now = datetime.now().strftime("%Y%m%d-%H%M%S")
         filename =f'{time_now}.png'
-        folder_path = GRADCAM_ASSETS_DIR + uid
+        folder_path = os.path.join(GRADCAM_ASSETS_DIR, uid)
         os.makedirs(folder_path, exist_ok=True)
         output_path = os.path.join(folder_path, filename)
         uidpath = uid + '/' + filename
@@ -29,9 +31,14 @@ def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2
             [model.get_layer(layer_name).output, model.output]
         )
 
+        image = tf.convert_to_tensor(image, dtype=tf.float32)
+        tabular_data = tf.convert_to_tensor(tabular_data, dtype=tf.float32)
+
+        zero_tabular = tf.zeros_like(tabular_data)
+
         # Generate gradients
         with tf.GradientTape() as tape:
-            conv_outputs, predictions = grad_model([image, tabular_data])
+            conv_outputs, predictions = grad_model([image, zero_tabular])
             loss = predictions[:, np.argmax(predictions[0])]
 
         # Extract gradients and feature map
@@ -45,7 +52,10 @@ def generate_gradcam(original_image, image, tabular_data, uid, layer_name='conv2
         max_val = tf.math.reduce_max(heatmap)
         heatmap = heatmap / (max_val + 1e-10)
         heatmap = heatmap.numpy()
-        print('heatmap', heatmap)        
+        # print('heatmap', heatmap)
+        # print("Predictions:", predictions.numpy())
+        # print("Conv Output shape:", conv_outputs.shape)
+
         
         # Resize heatmap to match original image size
         heatmap = cv2.resize(heatmap, (224, 224))

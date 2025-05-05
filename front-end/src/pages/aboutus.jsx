@@ -1,7 +1,7 @@
 import React from "react";
 import "./aboutus.css";
-import rectangle1195 from '../assets/Rectangle 1195.png';
-import img5 from '../assets/img 5.png';
+import rectangle1195 from '../../public/assets/Rectangle 1195.png';
+import img5 from '../../public/assets/img 5.png';
 
 export const Aboutus = () => {
   return (

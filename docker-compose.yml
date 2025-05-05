@@ -1,0 +1,27 @@
+services:
+  front-end:
+    build: ./front-end
+    env_file: .env.docker
+    ports:
+      - "3000:80"
+    depends_on:
+      - flask_model_service
+      - java_backend
+    volumes:
+      - ./shared_volume:/app/shared_volume
+
+  flask_model_service:
+    build: ./flask_model_service
+    ports:
+      - "5000:5000"
+    volumes:
+      - shared_assets:/app/assets
+
+  java_backend:
+    build: ./java_backend
+    env_file: .env.docker
+    ports:
+      - "8080:8080"
+
+volumes:
+  shared_assets:

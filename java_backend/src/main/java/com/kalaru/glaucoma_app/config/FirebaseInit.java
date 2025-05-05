@@ -13,7 +13,7 @@ public class FirebaseInit {
 
     @PostConstruct
     public void initialize() {
-        try (InputStream serviceAccount = getClass().getClassLoader().getResourceAsStream("glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json")) {
+        try (InputStream serviceAccount = getClass().getClassLoader().getResourceAsStream("glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json")) {
             if (serviceAccount == null) {
                 throw new IOException("Service account file not found");
             }

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './drop-file-input.css';
-import uploadImg from '../../assets/cloud-upload-regular-240.png';
+import uploadImg from '../../../public/assets/cloud-upload-regular-240.png';
 
 const DropFileInput = props => {
     const wrapperRef = useRef(null);

@@ -1,7 +1,7 @@
 import React from "react";
 import "./dashboard.css";
 import { Link } from 'react-router-dom';
-import { Rectangle1217, Rectangle1224 } from "../assets/dashboard";
+import { Rectangle1217, Rectangle1224 } from "../../public/assets/dashboard";
 import Icons from "../components/dashboard/Icons";
 
 export const Dashboard = () => {

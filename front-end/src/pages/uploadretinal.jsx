@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './uploadretinal.css'
-import { TumorsImage } from '../assets/index';
+import { TumorsImage } from '../../public/assets/index';
 import DropFileInput from '../components/drop-file-input/DropFileInput';
 import { Button } from '@mui/base/Button';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { getAuth } from 'firebase/auth';
 
 export const UploadRetinal = () => {
     const navigate = useNavigate();
+    const backendUrl = import.meta.env.VITE_JAVA_BACKEND_URL;
     const [formData, setFormData] = useState({
         // Common data
         gender: '',
@@ -24,7 +25,6 @@ export const UploadRetinal = () => {
         leftPneumatic: '',
         leftPachymetry: '',
         leftAxialLength: '',
-        leftVFMD: '',
         // Right eye data
         rightDioptre1: '',
         rightDioptre2: '',
@@ -33,7 +33,6 @@ export const UploadRetinal = () => {
         rightPneumatic: '',
         rightPachymetry: '',
         rightAxialLength: '',
-        rightVFMD: '',
     });
 
     const [leftEyeImage, setLeftEyeImage] = useState(null);
@@ -74,6 +73,60 @@ export const UploadRetinal = () => {
             return;
         }
 
+        // Left eye validations
+        if (!formData.leftDioptre1) {
+            toast.error('Please enter Left Eye Dioptre 1');
+            return;
+        }
+        if (!formData.leftDioptre2) {
+            toast.error('Please enter Left Eye Dioptre 2');
+            return;
+        }
+        if (!formData.leftAstigmatism) {
+            toast.error('Please enter Left Eye Astigmatism');
+            return;
+        }
+        if (!formData.leftPneumatic) {
+            toast.error('Please enter Left Eye Pneumatic IOP');
+            return;
+        }
+        if (!formData.leftPachymetry) {
+            toast.error('Please enter Left Eye Pachymetry');
+            return;
+        }
+        if (!formData.leftAxialLength) {
+            toast.error('Please enter Left Eye Axial Length');
+            return;
+        }
+
+
+        // Right eye validations
+        if (!formData.rightDioptre1) {
+            toast.error('Please enter Right Eye Dioptre 1');
+            return;
+        }
+        if (!formData.rightDioptre2) {
+            toast.error('Please enter Right Eye Dioptre 2');
+            return;
+        }
+        if (!formData.rightAstigmatism) {
+            toast.error('Please enter Right Eye Astigmatism');
+            return;
+        }
+        if (!formData.rightPneumatic) {
+            toast.error('Please enter Right Eye Pneumatic IOP');
+            return;
+        }
+        if (!formData.rightPachymetry) {
+            toast.error('Please enter Right Eye Pachymetry');
+            return;
+        }
+        if (!formData.rightAxialLength) {
+            toast.error('Please enter Right Eye Axial Length');
+            return;
+        }
+        
+
         // Check authentication first
         const auth = getAuth();
         const user = auth.currentUser;
@@ -98,7 +151,7 @@ export const UploadRetinal = () => {
             submitData.append('rightImage', rightEyeImage);
             submitData.append('data', JSON.stringify(formData));
 
-            const response = await fetch('http://localhost:8080/api/v1/submit', {
+            const response = await fetch(`${backendUrl}/api/v1/submit`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -115,7 +168,8 @@ export const UploadRetinal = () => {
                 state: { 
                     results: result,
                     leftImage: leftEyeImage,
-                    rightImage: rightEyeImage
+                    rightImage: rightEyeImage,
+                    formData: formData
                 } 
             });
         } catch (error) {
@@ -216,13 +270,6 @@ export const UploadRetinal = () => {
                                         value={formData.leftAxialLength}
                                         onChange={handleInputChange}
                                     />
-                                    <input
-                                        type="number"
-                                        name="leftVFMD"
-                                        placeholder="VF MD"
-                                        value={formData.leftVFMD}
-                                        onChange={handleInputChange}
-                                    />
                                 </div>
                             </div>
 
@@ -274,13 +321,6 @@ export const UploadRetinal = () => {
                                         name="rightAxialLength"
                                         placeholder="Axial Length"
                                         value={formData.rightAxialLength}
-                                        onChange={handleInputChange}
-                                    />
-                                    <input
-                                        type="number"
-                                        name="rightVFMD"
-                                        placeholder="VF MD"
-                                        value={formData.rightVFMD}
                                         onChange={handleInputChange}
                                     />
                                 </div>

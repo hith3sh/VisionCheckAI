@@ -21,7 +21,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-
+  const backendUrl = import.meta.env.VITE_JAVA_BACKEND_URL;
   const auth = getAuth();
 
   const handleEmailFocus = () => {
@@ -57,10 +57,10 @@ function Login() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log('User logged in:', user);
+      //console.log('User logged in:', user);
 
       const token = await user.getIdToken();
-      const response = await fetch("http://localhost:8080/api/verify-token", {
+      const response = await fetch(`${backendUrl}/api/verify-token`, {
       // Verify the token with the backend
         method: "POST",
         headers: {

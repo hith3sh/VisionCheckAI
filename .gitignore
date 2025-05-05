@@ -53,7 +53,7 @@ venv.bak/
 *.log
 
 #json
-glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json
+glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json
 
 #images
 *.png
@@ -62,4 +62,3 @@ glaucoma-c9752-firebase-adminsdk-fbsvc-44bbe210ac.json
 *.pkl
 *.bz2
 *.h5
-glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json

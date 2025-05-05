@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ContactUs.css';
-import rectangle1190 from '../assets/Rectangle 1190.png'
+import rectangle1190 from '../../public/assets/Rectangle 1190.png'
 
 import { Link } from "react-router-dom";
 

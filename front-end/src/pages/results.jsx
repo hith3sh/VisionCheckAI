@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import './results.css';
 import { styled } from '@mui/material/styles';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { getAuth } from 'firebase/auth';
+import { getFirestore, collection, addDoc, doc, setDoc } from 'firebase/firestore';
 
 // Add these styled components
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
@@ -39,10 +41,46 @@ function Results() {
     const { results, leftImage, rightImage } = location.state || {};
 
     useEffect(() => {
-        if (results) {
+        const saveResultsToFirestore = async () => {
+            if (results) {
+                try {
+                    const auth = getAuth();
+                    const user = auth.currentUser;
+                    
+                    if (!user) {
+                        console.error('No authenticated user found');
+                        navigate('/login');
+                        return;
+                    }
+
+                    const db = getFirestore();
+                    // Store in a collection named with user's UID
+                    const userReportsRef = collection(db, user.uid);
+                    
+                    const reportData = {
+                        userId: user.uid,
+                        formData: location.state?.formData || {},  // Add fallback empty object
+                        result: {
+                            glaucoma_state_left_eye: results.glaucoma_state_left_eye,
+                            glaucoma_state_right_eye: results.glaucoma_state_right_eye,
+                            left_gradcam_path: results.left_gradcam_path,
+                            right_gradcam_path: results.right_gradcam_path,
+                            left_shap_path: results.left_shap_path,
+                            right_shap_path: results.right_shap_path
+                        }
+                    };
+
+                    await addDoc(userReportsRef, reportData);
+                    console.log('Results saved to Firestore');
+                } catch (error) {
+                    console.error('Error saving results:', error);
+                }
+            }
             setIsLoading(false);
-        }
-    }, [results]);
+        };
+
+        saveResultsToFirestore();
+    }, [results, location.state]);
 
     if (isLoading) {
         return <LoadingSpinner />;

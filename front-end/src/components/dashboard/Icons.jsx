@@ -1,6 +1,6 @@
 import React from 'react';
 import './icons.css';
-import { Navy, image19, image6, image3, image18 } from '../../assets/dashboard';
+import { Navy, image19, image6, image3, image18 } from '../../../public/assets/dashboard';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 

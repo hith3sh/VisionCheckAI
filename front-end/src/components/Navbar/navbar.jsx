@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
-import { Logo, TumorAI ,Newlogo} from '../../assets/index'
+import { Logo, TumorAI ,Newlogo} from '../../../public/assets/index'
 import './navbar.css'
 import  CustButton  from '../custbutton/custbutton'
 import { Button } from '@mui/base/Button';

@@ -19,7 +19,7 @@
   padding: 0 2rem;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
-  background: url(src/assets/nurse.jpg);
+  background: url(/assets/nurse.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 

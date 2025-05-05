@@ -19,10 +19,14 @@ fusion_model = get_model()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
-SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets/')
+
+# SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets/')
+SHAP_ASSETS_DIR = os.path.join('/app/assets', 'shap_assets')
+
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
-MINMAXSCALAR = os.path.join(BASE_DIR, '../weights/minmax_scaler.pkl')
-PICKLE_PATH = os.path.join(BASE_DIR, '../weights/shap_explainer.pkl.bz2')
+MINMAXSCALAR = os.path.join(BASE_DIR, 'weights', 'minmax_scaler.pkl')
+PICKLE_PATH = os.path.join(BASE_DIR, 'weights', 'shap_explainer.pkl.bz2')
+
 
 tabular_features = ["Age", "Gender", "dioptre_1", "dioptre_2","astigmatism","Phakic_Pseudophakic","Pneumatic","Pachymetry","Axial_Length"]
 
@@ -34,15 +38,14 @@ with bz2.BZ2File(PICKLE_PATH, 'rb') as f:
 
 def generate_shap(image, tabular_data, uid):
     try:
-        folder_path = SHAP_ASSETS_DIR + uid
+        folder_path = os.path.join(SHAP_ASSETS_DIR, uid)
         os.makedirs(folder_path, exist_ok=True)
-        time_now = datetime.now()
+        time_now = datetime.now().strftime("%Y%m%d-%H%M%S")
         filename =f'{time_now}.png'
         filepath = os.path.join(folder_path, filename)
         uidpath = uid + '/' + filename
         # Generate SHAP values from explainer
         tabular_data_normalized = scaler.transform(tabular_data)
-        print('tabular' ,tabular_data_normalized)
 
         shap_values = explainer.shap_values([image, tabular_data_normalized])
         shap_values_reshaped = shap_values[1][:, :, 1] 
@@ -73,10 +76,3 @@ def generate_shap(image, tabular_data, uid):
     except Exception as e:
         print(f"Error generating SHAP plot: {str(e)}")
         raise e
-
-# if __name__ == "__main__":
-    # Test the function
-    # image_path = "cropped_image.jpg"
-
-    # output_path = generate_shap(image_path, tabular_array_np)
-    # print(f"SHAP plot saved to: {output_path}")
