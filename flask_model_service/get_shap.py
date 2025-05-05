@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
 
 # SHAP_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/shap_assets/')
-SHAP_ASSETS_DIR = os.path.join('/app/assets', 'shap_assets')
+SHAP_ASSETS_DIR = os.path.join(BASE_DIR, 'shared_volume', 'shap_assets')
 
 os.makedirs(SHAP_ASSETS_DIR, exist_ok=True)
 MINMAXSCALAR = os.path.join(BASE_DIR, 'weights', 'minmax_scaler.pkl')

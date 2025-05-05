@@ -8,14 +8,15 @@ services:
       - flask_model_service
       - java_backend
     volumes:
-      - ./shared_volume:/app/shared_volume
+      #- shared_assets:/app/public/assets
+      - ./shared_volume:/app/shared_volume # shared volume mounted
 
   flask_model_service:
     build: ./flask_model_service
     ports:
       - "5000:5000"
-    volumes:
-      - shared_assets:/app/assets
+    # volumes:
+    #   - shared_assets:/app/assets
 
   java_backend:
     build: ./java_backend
@@ -23,5 +24,5 @@ services:
     ports:
       - "8080:8080"
 
-volumes:
-  shared_assets:
+# volumes:
+#   shared_assets:

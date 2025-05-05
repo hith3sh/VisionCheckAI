@@ -11,7 +11,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # images should be on the front-end/public/assets/gradcam_assets to be displayed on the results page
 
 #GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, '../front-end/public/assets/gradcam_assets/') 
-GRADCAM_ASSETS_DIR = os.path.join('/app/assets', 'gradcam_assets')
+GRADCAM_ASSETS_DIR = os.path.join(BASE_DIR, 'shared_volume', 'gradcam_assets')
+
 os.makedirs(GRADCAM_ASSETS_DIR, exist_ok=True)
 
 model = get_model()

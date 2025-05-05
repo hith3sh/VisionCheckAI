@@ -11,4 +11,6 @@ RUN pip install -r requirements.txt
 COPY . .
 COPY ../weights/ /app/weights/
 
+RUN pip install python-dotenv
+
 CMD ["python", "-u", "app.py"]

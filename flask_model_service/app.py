@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, abort
 from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
@@ -17,11 +17,17 @@ import jwt
 import firebase_admin
 from firebase_admin import credentials, auth
 import time
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load from .env file
+
+BACKEND_BASE_URL = os.getenv("VITE_PYTHON_BACKEND_URL", "http://localhost:5000")
 
 # Load Firebase service account credentials
 cred = credentials.Certificate("glaucoma-c9752-firebase-adminsdk-fbsvc-26b167ec2f.json")
 firebase_admin.initialize_app(cred)
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 crop_box = (600, 300, 1600, 1200) # crop box for image sizes :height: 1934, width: 2576
 # 'OS' (left eye): 0,
@@ -91,6 +97,27 @@ def glaucoma_state(prediction):
     else:
         glaucoma_stage = 'advanced glaucoma'
     return glaucoma_stage
+
+
+@app.route('/assets/gradcam_assets/<path:subpath>')
+def serve_gradcam(subpath):
+    gradcam_dir = os.path.join(BASE_DIR, 'shared_volume', 'gradcam_assets')
+    return send_from_directory(gradcam_dir, subpath)
+
+@app.route('/assets/shap_assets/<path:subpath>')
+def serve_shap(subpath):
+    shap_dir = os.path.join(BASE_DIR, 'shared_volume', 'shap_assets')
+    return send_from_directory(shap_dir, subpath)
+
+
+def safe_send(directory, filename):
+    """Helper to prevent directory traversal attacks."""
+    full_path = os.path.join(directory, filename)
+    if not os.path.isfile(full_path):
+        abort(404)
+    return send_from_directory(directory, filename)
+
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -217,24 +244,30 @@ def predict():
 
         # Explainable AI
         # SHAP
-        left_shap_path = generate_shap(left_eye_image, left_tabular_array, uid)
-        right_shap_path = generate_shap(right_eye_image, right_tabular_array, uid)
+        left_shap_filename = generate_shap(left_eye_image, left_tabular_array, uid)
+        right_shap_filename = generate_shap(right_eye_image, right_tabular_array, uid)
  
         # GradCAM
-        left_gradcam_path = generate_gradcam(original_left_image, left_eye_image, left_tabular_array, uid)
-        print('left gradcam path', left_gradcam_path)
+        left_gradcam_filename = generate_gradcam(original_left_image, left_eye_image, left_tabular_array, uid)
+        print('left gradcam path', left_gradcam_filename)
         time.sleep(3)
-        right_gradcam_path = generate_gradcam(original_right_image, right_eye_image, right_tabular_array, uid)
-        print('right gradcam path', right_gradcam_path)
+        right_gradcam_filename = generate_gradcam(original_right_image, right_eye_image, right_tabular_array, uid)
+        print('right gradcam path', right_gradcam_filename)
+
+        # Build URLs pointing to Flask routes
+        left_shap_url = f"{BACKEND_BASE_URL}/assets/shap_assets/{left_shap_filename}"
+        right_shap_url = f"{BACKEND_BASE_URL}/assets/shap_assets/{right_shap_filename}"
+        left_gradcam_url = f"{BACKEND_BASE_URL}/assets/gradcam_assets/{left_gradcam_filename}"
+        right_gradcam_url = f"{BACKEND_BASE_URL}/assets/gradcam_assets/{right_gradcam_filename}"
+
         
-        time.sleep(10)
         return jsonify({
             "glaucoma_state_right_eye": right_glaucoma_stage,
             "glaucoma_state_left_eye": left_glaucoma_stage,
-            "left_shap_path": left_shap_path,
-            "right_shap_path": right_shap_path,
-            "left_gradcam_path": left_gradcam_path,
-            "right_gradcam_path": right_gradcam_path
+            "left_shap_path": left_shap_url,
+            "right_shap_path": right_shap_url,
+            "left_gradcam_path": left_gradcam_url,
+            "right_gradcam_path": right_gradcam_url
             }),200
     
     except Exception as e:

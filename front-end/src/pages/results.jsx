@@ -188,7 +188,7 @@ function Results() {
                                         <h4>GradCAM Visualization</h4>
                                         {results.left_gradcam_path && (
                                             <img 
-                                                src={`/assets/gradcam_assets/${results.left_gradcam_path}`} 
+                                                src={`${results.left_gradcam_path}?t=${Date.now()}`} 
                                                 alt="Left Eye GradCAM" 
                                                 className="xai-image"
                                             />
@@ -198,7 +198,8 @@ function Results() {
                                         <h4>SHAP Analysis</h4>
                                         {results.left_shap_path && (
                                             <img 
-                                                src={`/assets/shap_assets/${results.left_shap_path}`} 
+                                                src={`${results.left_shap_path}?t=${Date.now()}`}
+                                                //src={`http://localhost:5000/assets/gradcam/${results.left_gradcam_path}?t=${Date.now()}`}
                                                 alt="Left Eye SHAP" 
                                                 className="xai-image"
                                             />
@@ -215,7 +216,7 @@ function Results() {
                                         <h4>GradCAM Visualization</h4>
                                         {results.right_gradcam_path && (
                                             <img 
-                                                src={`/assets/gradcam_assets/${results.right_gradcam_path}`} 
+                                                src={`${results.right_gradcam_path}?t=${Date.now()}`} 
                                                 alt="Right Eye GradCAM" 
                                                 className="xai-image"
                                             />
@@ -225,7 +226,7 @@ function Results() {
                                         <h4>SHAP Analysis</h4>
                                         {results.right_shap_path && (
                                             <img 
-                                                src={`/assets/shap_assets/${results.right_shap_path}`} 
+                                                src={`${results.right_shap_path}?t=${Date.now()}`} 
                                                 alt="Right Eye SHAP" 
                                                 className="xai-image"
                                             />
