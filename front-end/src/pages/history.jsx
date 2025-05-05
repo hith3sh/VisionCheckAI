@@ -38,6 +38,7 @@ const History = () => {
   const [loading, setLoading] = useState(true); // Track loading state
   const navigate = useNavigate(); // For navigation to login page
   const userID = ''
+  const baseBackendUrl = import.meta.env.VITE_PYTHON_BACKEND_URL;
   // Fetch reports from Firestore for the authenticated user
   const fetchReports = async (user) => {
     if (!user) {
@@ -188,8 +189,8 @@ const History = () => {
     yPosition += right_explanation_wrappedText.length * 6;
 
     // Define base paths for images
-    const gradcam_imageBasePath = `../../public/assets/gradcam_assets/`;
-    const shap_imageBasePath = `../../public/assets/shap_assets/`;
+    const gradcamBaseUrl = `${baseBackendUrl}/assets/gradcam_assets/`;
+    const shapBaseUrl    = `${baseBackendUrl}/assets/shap_assets/`;
   
     // Utility to compute side by side image settings
     const getSideBySideSettings = (doc, gap = 10, margin = 10) => {
@@ -215,8 +216,8 @@ const History = () => {
   
       try {
         // Get both images in parallel
-        const leftImagePath = `${gradcam_imageBasePath}${result.left_gradcam_path}`;
-        const rightImagePath = `${gradcam_imageBasePath}${result.right_gradcam_path}`;
+        const leftImagePath = `${gradcamBaseUrl}${result.left_gradcam_path}`;
+        const rightImagePath = `${gradcamBaseUrl}${result.right_gradcam_path}`;
         const [leftImageBase64, rightImageBase64] = await Promise.all([
           fetchImageAsBase64(leftImagePath),
           fetchImageAsBase64(rightImagePath)
@@ -255,8 +256,8 @@ const History = () => {
   
       try {
         // Get both images in parallel
-        const leftImagePath = `${shap_imageBasePath}${result.left_shap_path}`;
-        const rightImagePath = `${shap_imageBasePath}${result.right_shap_path}`;
+        const leftImagePath = `${shapBaseUrl}${result.left_shap_path}`;
+        const rightImagePath = `${shapBaseUrl}${result.right_shap_path}`;
         const [leftImageBase64, rightImageBase64] = await Promise.all([
           fetchImageAsBase64(leftImagePath),
           fetchImageAsBase64(rightImagePath)
