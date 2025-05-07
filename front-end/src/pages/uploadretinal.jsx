@@ -39,6 +39,22 @@ export const UploadRetinal = () => {
     const [rightEyeImage, setRightEyeImage] = useState(null);
     const [results, setResults] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const fieldRanges = {
+        leftDioptre1: { min: -3, max: 5 },
+        leftDioptre2: { min: -2, max: 2 },
+        leftAstigmatism: { min: 75, max: 115 },
+        leftPneumatic: { min: 10, max: 23 },
+        leftPachymetry: { min: 450, max: 650 },
+        leftAxialLength: { min: 22, max: 25 },
+    
+        rightDioptre1: { min: -3, max: 5 },
+        rightDioptre2: { min: -2, max: 2 },
+        rightAstigmatism: { min: -75, max: 115 },
+        rightPneumatic: { min: 10, max: 23 },
+        rightPachymetry: { min: 450, max: 650 },
+        rightAxialLength: { min: 22, max: 25 },
+    };
+    
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -125,7 +141,13 @@ export const UploadRetinal = () => {
             toast.error('Please enter Right Eye Axial Length');
             return;
         }
-        
+        for (const [field, range] of Object.entries(fieldRanges)) {
+            const value = parseFloat(formData[field]);
+            if (isNaN(value) || value < range.min || value > range.max) {
+                toast.error(`Invalid ${field}: Please enter a value between ${range.min} and ${range.max}`);
+                return;
+            }
+        }
 
         // Check authentication first
         const auth = getAuth();
@@ -230,6 +252,8 @@ export const UploadRetinal = () => {
                                         placeholder="Dioptre 1"
                                         value={formData.leftDioptre1}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftDioptre1.min}
+                                        max={fieldRanges.leftDioptre1.max}
                                     />
                                     <input
                                         type="number"
@@ -237,6 +261,8 @@ export const UploadRetinal = () => {
                                         placeholder="Dioptre 2"
                                         value={formData.leftDioptre2}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftDioptre2.min}
+                                        max={fieldRanges.leftDioptre2.max}
                                     />
                                     <input
                                         type="number"
@@ -244,6 +270,8 @@ export const UploadRetinal = () => {
                                         placeholder="Astigmatism"
                                         value={formData.leftAstigmatism}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftAstigmatism.min}
+                                        max={fieldRanges.leftAstigmatism.max}
                                     />
                                     <select name="leftLens" value={formData.leftLens} onChange={handleInputChange}>
                                         <option value="no">No Lens</option>
@@ -255,6 +283,8 @@ export const UploadRetinal = () => {
                                         placeholder="Pneumatic IOP"
                                         value={formData.leftPneumatic}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftPneumatic.min}
+                                        max={fieldRanges.leftPneumatic.max}
                                     />
                                     <input
                                         type="number"
@@ -262,6 +292,8 @@ export const UploadRetinal = () => {
                                         placeholder="Pachymetry"
                                         value={formData.leftPachymetry}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftPachymetry.min}
+                                        max={fieldRanges.leftPachymetry.max}
                                     />
                                     <input
                                         type="number"
@@ -269,6 +301,8 @@ export const UploadRetinal = () => {
                                         placeholder="Axial Length"
                                         value={formData.leftAxialLength}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.leftAxialLength.min}
+                                        max={fieldRanges.leftAxialLength.max}
                                     />
                                 </div>
                             </div>
@@ -283,6 +317,8 @@ export const UploadRetinal = () => {
                                         placeholder="Dioptre 1"
                                         value={formData.rightDioptre1}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightDioptre1.min}
+                                        max={fieldRanges.rightDioptre1.max}
                                     />
                                     <input
                                         type="number"
@@ -290,6 +326,8 @@ export const UploadRetinal = () => {
                                         placeholder="Dioptre 2"
                                         value={formData.rightDioptre2}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightDioptre2.min}
+                                        max={fieldRanges.rightDioptre2.max}
                                     />
                                     <input
                                         type="number"
@@ -297,6 +335,8 @@ export const UploadRetinal = () => {
                                         placeholder="Astigmatism"
                                         value={formData.rightAstigmatism}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightAstigmatism.min}
+                                        max={fieldRanges.rightAstigmatism.max}
                                     />
                                     <select name="rightLens" value={formData.rightLens} onChange={handleInputChange}>
                                         <option value="no">No Lens</option>
@@ -308,6 +348,8 @@ export const UploadRetinal = () => {
                                         placeholder="Pneumatic IOP"
                                         value={formData.rightPneumatic}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightPneumatic.min}
+                                        max={fieldRanges.rightPneumatic.max}
                                     />
                                     <input
                                         type="number"
@@ -315,6 +357,8 @@ export const UploadRetinal = () => {
                                         placeholder="Pachymetry"
                                         value={formData.rightPachymetry}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightPachymetry.min}
+                                        max={fieldRanges.rightPachymetry.max}
                                     />
                                     <input
                                         type="number"
@@ -322,6 +366,8 @@ export const UploadRetinal = () => {
                                         placeholder="Axial Length"
                                         value={formData.rightAxialLength}
                                         onChange={handleInputChange}
+                                        min={fieldRanges.rightAxialLength.min}
+                                        max={fieldRanges.rightAxialLength.max}
                                     />
                                 </div>
                             </div>
