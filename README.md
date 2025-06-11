@@ -101,4 +101,5 @@ service cloud.firestore {
 3. select genarate new private key
 4. Download that json file and place it inside flask_model_service/
 5. make a copy of it and place it inside java_backend/src/main/resources/
+![Glaucoma App](https://github.com/user-attachments/assets/4ecafac3-58cb-4762-a58c-45e5d6c70807)
 
